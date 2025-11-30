@@ -405,7 +405,12 @@ export default defineComponent({
     font-weight: var(--font-weight-regular);
     line-height: 1.2;
     padding: 0;
-    display: block;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    display: block !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
     color: var(--color-text-primary) !important;
   }
 
