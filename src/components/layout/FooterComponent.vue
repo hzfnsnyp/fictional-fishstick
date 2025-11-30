@@ -383,10 +383,14 @@ export default defineComponent({
   .footer__nav-list {
     flex-direction: column;
     gap: 0;
+    padding: 0;
+    margin: 0;
   }
 
   .footer__nav-list li {
     margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
   /* Visual Grouping: Bio/Projects/Artworks, Exhibitions/Media, Privacy/Terms */
@@ -404,12 +408,15 @@ export default defineComponent({
     font-size: var(--font-size-18);
     font-weight: var(--font-weight-regular);
     line-height: 1.4;
-    padding: 0;
+    padding: 0 !important;
+    margin: 0 !important;
     min-height: var(--spacing-40) !important;
     min-width: 0 !important;
     display: flex !important;
     align-items: center !important;
+    justify-content: flex-start !important;
     text-align: left !important;
+    width: 100%;
     color: var(--color-text-primary) !important;
   }
 
