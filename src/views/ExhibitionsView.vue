@@ -1,0 +1,45 @@
+<template>
+  <main class="main-content flow main-content--flow-compact">
+    <h1 class="sr-only">Exhibitions</h1>
+    <ExhibitionsArchive :exhibitions="exhibitionsArchive" />
+  </main>
+</template>
+
+<script setup>
+import { computed, onMounted } from 'vue'
+import ExhibitionsArchive from '@/components/archive/ExhibitionsArchive.vue'
+import { useSEO } from '@/composables/useSEO'
+import { useExhibitions } from '@/composables/useStrapi'
+import { useExhibitionData } from '@/composables/useCMSData'
+
+const { setSEO } = useSEO()
+const { exhibitions, fetchExhibitions } = useExhibitions()
+
+const fallbackExhibitions = [
+  { id: 1, label: '2024', title: 'Exhibition placeholder', meta: 'Add exhibitions in Strapi', url: '' }
+]
+
+const exhibitionsArchive = computed(() => {
+  if (exhibitions.value?.length) {
+    return exhibitions.value.map((entry) => {
+      const data = useExhibitionData(entry).value
+      return {
+        id: data.id,
+        label: data.year?.toString() || '',
+        title: data.title,
+        meta: [data.venue, data.location, data.type].filter(Boolean).join(', '),
+        url: data.url
+      }
+    })
+  }
+  return fallbackExhibitions
+})
+
+onMounted(async () => {
+  await fetchExhibitions()
+  setSEO({
+    title: 'Exhibitions',
+    description: 'View exhibition history including solo and group shows across Europe.'
+  })
+})
+</script>

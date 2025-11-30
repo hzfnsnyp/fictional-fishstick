@@ -1,0 +1,24 @@
+# robots.txt for Artist Portfolio
+# https://www.robotstxt.org/
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow admin and test routes
+Disallow: /admin/
+Disallow: /ui-demo
+Disallow: /test
+Disallow: /layout-gutters-test
+Disallow: /blocks-inventory
+
+# Sitemap location
+Sitemap: https://yourdomain.com/sitemap.xml
+
+# Crawl-delay for specific bots (optional)
+# User-agent: Googlebot
+# Crawl-delay: 0
+
+# Block specific bots (if needed)
+# User-agent: BadBot
+# Disallow: /

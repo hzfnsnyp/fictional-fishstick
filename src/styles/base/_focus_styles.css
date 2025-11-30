@@ -1,0 +1,76 @@
+/* ==========================================================================
+   CLEAN FOCUS SYSTEM - Mouse vs Keyboard
+   ========================================================================== */
+
+:root {
+  --shadow-focus-ring: 
+    0 0 0 2px white,
+    0 0 0 4px rgba(145, 9, 11, 0.7);
+}
+
+/* ==========================================================================
+   RESET DEFAULT FOCUS
+   ========================================================================== */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ==========================================================================
+   MOUSE FOCUS - Border color change only
+   ========================================================================== */
+input:focus,
+textarea:focus,
+.input:focus,
+.custom-dropdown-trigger:focus {
+  border-color: var(--color-brand-primary) !important;
+  box-shadow: none !important;
+}
+
+/* ==========================================================================
+   KEYBOARD FOCUS - Full focus ring
+   ========================================================================== */
+.custom-focus-system input.focus-visible,
+.custom-focus-system textarea.focus-visible,
+.custom-focus-system .input.focus-visible,
+.custom-focus-system .btn.focus-visible,
+.custom-focus-system .clickable-text.focus-visible,
+.custom-focus-system .pagination-item.focus-visible,
+.custom-focus-system .header__menu-toggle.focus-visible,
+.custom-focus-system .menu-overlay__close.focus-visible,
+.custom-focus-system .input-clear.focus-visible,
+.custom-focus-system .custom-dropdown-trigger.focus-visible {
+  box-shadow: var(--shadow-focus-ring) !important;
+  border-color: var(--color-brand-primary) !important;
+}
+
+/* Special elements with hidden inputs */
+.custom-focus-system .checkbox-input.focus-visible + .checkbox-box,
+.custom-focus-system .radio-input.focus-visible + .radio-circle,
+.custom-focus-system .switch-input.focus-visible + .switch-track {
+  box-shadow: var(--shadow-focus-ring) !important;
+}
+
+/* ==========================================================================
+   FALLBACK - Native :focus-visible support
+   ========================================================================== */
+@supports selector(:focus-visible) {
+  body:not(.custom-focus-system) input:focus-visible,
+  body:not(.custom-focus-system) textarea:focus-visible,
+  body:not(.custom-focus-system) .input:focus-visible,
+  body:not(.custom-focus-system) .btn:focus-visible,
+  body:not(.custom-focus-system) .clickable-text:focus-visible,
+  body:not(.custom-focus-system) .pagination-item:focus-visible,
+  body:not(.custom-focus-system) .header__menu-toggle:focus-visible,
+  body:not(.custom-focus-system) .menu-overlay__close:focus-visible,
+  body:not(.custom-focus-system) .input-clear:focus-visible,
+  body:not(.custom-focus-system) .custom-dropdown-trigger:focus-visible {
+    box-shadow: var(--shadow-focus-ring) !important;
+    border-color: var(--color-brand-primary) !important;
+  }
+}
+
+
+
+.menu-overlay__close:focus {
+  outline: none !important;
+}

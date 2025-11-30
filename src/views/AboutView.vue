@@ -1,0 +1,180 @@
+<template>
+  <main class="main-content flow main-content--flow-loose about-page">
+    <h1 class="sr-only">Biography</h1>
+
+    <AboutBiographySection
+      :heading="biographySection.heading"
+      :eyebrow="biographySection.eyebrow"
+      :paragraphs="biographySection.paragraphs"
+      :image-src="biographySection.imageSrc"
+      :image-alt="biographySection.imageAlt"
+      :image-caption="biographySection.imageCaption"
+      :downloads="biographySection.downloads"
+    />
+
+    <SeriesOverviewSection
+      container="wide"
+      sr-heading="Projects in focus"
+      :items="seriesItems"
+    />
+
+    <ArtistStatementSection
+      container="content"
+      :heading="statementBlock.heading"
+      :paragraphs="statementBlock.paragraphs"
+    />
+
+  </main>
+</template>
+
+<script setup>
+import { computed, onMounted } from 'vue'
+import AboutBiographySection from '@/components/about/AboutBiographySection.vue'
+import ArtistStatementSection from '@/components/about/ArtistStatementSection.vue'
+import SeriesOverviewSection from '@/components/shared/SeriesOverviewSection.vue'
+import { usePage } from '@/composables/useStrapi'
+import { usePageContent } from '@/composables/useCMSData'
+import { useSEO } from '@/composables/useSEO'
+
+const { page, fetchPage } = usePage('about')
+const { setSEO } = useSEO()
+
+const placeholderImage =
+  'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><rect width="100%" height="100%" fill=\"%23910d0f\"/></svg>'
+
+const fallbackBiography = {
+  heading: 'Biography',
+  eyebrow: '',
+  paragraphs: [
+    'Leah Sanata works between Dubai and itinerant residencies, building paintings where geometry slows time and light holds emotion. Trained outside of institutions, she treats every series as an inquiry: what does grace look like when it is engineered through color, proportion, and patience?',
+    'Her process, which she calls “gradualism,” is a slow accumulation of glazes and decisive impasto strokes. Underlayers map harmonic ratios; upper layers listen for light. The method emerged in 2021 after years of experimentation across watercolor, ink, and oil.',
+    'Recent exhibitions in Europe and Central Asia introduced catalogues that document her systems of color, prompting collaborations with architects and designers. Publications include features in Artist Talk Magazine (UK), Goddessarts Magazine (DE), and Visual Art Journal (NL).',
+    'Sanata’s practice remains grounded in observation. Sketches of desert light and botanical motifs inform the grids and arcs that recur throughout her canvases. The work argues that beauty—chosen deliberately—is both radical and durable.'
+  ],
+  imageSrc: placeholderImage,
+  imageAlt: 'Studio portrait placeholder',
+  imageCaption: '',
+  downloads: [
+    { label: 'Catalog — Gradualism series', meta: 'PDF', href: '' },
+    { label: 'Catalog — Chromatic Gardens series', meta: 'PDF', href: '' },
+    { label: 'Selected exhibitions', meta: 'PDF', href: '' },
+    { label: 'Curriculum vitae', meta: 'PDF', href: '' },
+    { label: 'Selected artworks catalog', meta: 'PDF', href: '' }
+  ]
+}
+
+const fallbackStatement = {
+  heading: 'Artist Statement',
+  paragraphs: [
+    'Replace with Strapi → Pages → About (Essay section).',
+    'Use this block for a concise statement pulled from CMS.'
+  ]
+}
+
+const fallbackSeries = [
+  {
+    title: 'Project placeholder',
+    description: 'Projects data will load from Strapi.',
+    startYear: 2024,
+    endYear: null,
+    medium: 'Mixed media',
+    dimensions: '',
+    image: placeholderImage,
+    alt: 'Placeholder project',
+    buttonLabel: 'View project',
+    to: { name: 'projects' },
+    catalogPdf: null
+  }
+]
+
+const contentSections = computed(() => usePageContent(page.value)?.value || [])
+
+const seriesItems = computed(() => {
+  const section = contentSections.value.find(item => item.type === 'series-overview')
+  if (!section?.series?.length) return fallbackSeries
+
+  return section.series.map(series => ({
+    title: series.title,
+    description: series.description,
+    startYear: series.startYear,
+    endYear: series.endYear,
+    medium: series.metadata?.find(meta => meta.label === 'medium')?.value || series.medium,
+    dimensions: series.metadata?.find(meta => meta.label === 'dimensions')?.value || series.dimensions,
+    image: series.coverImage || placeholderImage,
+    alt: series.title,
+    buttonLabel: 'View project',
+    catalogPdf: series.catalogPdf,
+    to: series.slug ? { name: 'projects', params: { slug: series.slug } } : { name: 'projects' }
+  }))
+})
+
+const biographySection = computed(() => {
+  const essay = contentSections.value.find(item => item.type === 'essay')
+
+  return {
+    heading: page.value?.title || fallbackBiography.heading,
+    eyebrow: fallbackBiography.eyebrow,
+    paragraphs: essay?.paragraphs?.length ? essay.paragraphs : fallbackBiography.paragraphs,
+    imageSrc: fallbackBiography.imageSrc,
+    imageAlt: fallbackBiography.imageAlt,
+    imageCaption: fallbackBiography.imageCaption,
+    downloads: (() => {
+      const seriesCatalogs = seriesItems.value
+        .filter(item => item.catalogPdf?.url)
+        .map(item => ({
+          label: `${item.title} catalog`,
+          meta: 'PDF',
+          href: item.catalogPdf.url
+        }))
+
+      const downloads = [...seriesCatalogs, ...fallbackBiography.downloads]
+      const uniqueLabels = new Set()
+      return downloads.filter(item => {
+        if (uniqueLabels.has(item.label)) return false
+        uniqueLabels.add(item.label)
+        return true
+      })
+    })()
+  }
+})
+
+const statementBlock = computed(() => {
+  const section = contentSections.value.find(item => item.type === 'essay')
+  if (!section) return fallbackStatement
+
+  return {
+    heading: section.headingLine1 || fallbackStatement.heading,
+    paragraphs: section.paragraphs?.length ? section.paragraphs : fallbackStatement.paragraphs
+  }
+})
+
+onMounted(async () => {
+  await fetchPage('about')
+
+  const seo = page.value?.seo
+  if (seo) {
+    setSEO({
+      title: seo.metaTitle || page.value.title || 'About',
+      description: seo.metaDescription,
+      image: seo.metaImage?.data?.attributes?.url
+    })
+  } else {
+    setSEO({
+      title: 'About',
+      description: 'About page content will be loaded from Strapi.'
+    })
+  }
+})
+</script>
+
+<style scoped>
+.about-page {
+  padding-bottom: var(--spacing-96);
+}
+
+@media (max-width: 768px) {
+  .about-page {
+    padding-bottom: var(--spacing-64);
+  }
+}
+</style>

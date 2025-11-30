@@ -1,0 +1,449 @@
+/* ==========================================================================
+   CSS Variables - Art Portfolio Design System (MERGED TYPOGRAPHY)
+   ========================================================================== */
+
+:root {
+  /* ==========================================================================
+     Core 8-Color Palette - HSL Values (UNCHANGED)
+     ========================================================================== */
+
+  /* Foundation Background */
+  --foundation-h: 38;
+  --foundation-s: 29%;
+  --foundation-l: 95%; /* #f6f3ef */
+
+  /* Red Accent Family */
+  --red-default-h: 359;
+  --red-default-s: 84%;
+  --red-default-l: 31%; /* #910d0f */
+
+  --red-hover-h: 359;
+  --red-hover-s: 84%;
+  --red-hover-l: 26%; /* #7a0b0c */
+
+  /* Blue-Gray Text Family */
+  --text-primary-h: 200;
+  --text-primary-s: 8%;
+  --text-primary-l: 7%; /* #101213 */
+
+  --text-secondary-h: 214;
+  --text-secondary-s: 12%;
+  --text-secondary-l: 27%; /* #3d444d */
+
+  --text-placeholder-h: 208;
+  --text-placeholder-s: 8%;
+  --text-placeholder-l: 40%; /* Improved from 45% to 40% for better contrast (4.5:1+) */
+
+  /* Background States */
+  --bg-disabled-h: 210;
+  --bg-disabled-s: 6%;
+  --bg-disabled-l: 86%; /* #d9dbdd */
+
+  --bg-hover-h: 35;
+  --bg-hover-s: 21%;
+  --bg-hover-l: 89%; /* #e9e4dd */
+
+  --bg-pressed-h: 33;
+  --bg-pressed-s: 9%;
+  --bg-pressed-l: 75%; /* #c5c0ba */
+
+  /* ==========================================================================
+     Semantic Color Mapping - Using Only the 8 Core Colors (UNCHANGED)
+     ========================================================================== */
+
+  /* Surface Colors */
+  --color-surface-primary: hsl(
+    var(--foundation-h),
+    var(--foundation-s),
+    var(--foundation-l)
+  ); /* #f6f3ef */
+  --color-surface-secondary: hsl(
+    var(--bg-hover-h),
+    var(--bg-hover-s),
+    var(--bg-hover-l)
+  ); /* #e9e4dd */
+  --color-surface-disabled: hsl(
+    var(--bg-disabled-h),
+    var(--bg-disabled-s),
+    var(--bg-disabled-l)
+  ); /* #d9dbdd */
+
+  /* Text Colors */
+  --color-text-primary: hsl(
+    var(--text-primary-h),
+    var(--text-primary-s),
+    var(--text-primary-l)
+  ); /* #101213 */
+  --color-text-secondary: hsl(
+    var(--text-secondary-h),
+    var(--text-secondary-s),
+    var(--text-secondary-l)
+  ); /* #3d444d */
+  --color-text-muted: hsl(
+    var(--text-placeholder-h),
+    var(--text-placeholder-s),
+    var(--text-placeholder-l)
+  ); /* #6c737a */
+  --color-text-placeholder: var(--color-text-muted); /* #6c737a */
+  --color-text-disabled: var(--color-text-muted); /* #6c737a */
+  --color-text-inverse: var(--color-surface-primary); /* #f6f3ef */
+  --color-text-on-accent: var(--color-surface-primary); /* #f6f3ef */
+
+  /* Brand/Accent Colors */
+  --color-brand-primary: hsl(
+    var(--red-default-h),
+    var(--red-default-s),
+    var(--red-default-l)
+  ); /* #910d0f */
+  --color-brand-hover: hsl(
+    var(--red-hover-h),
+    var(--red-hover-s),
+    var(--red-hover-l)
+  ); /* #7a0b0c */
+
+  /* Interactive Colors */
+  --color-interactive-default: var(--color-brand-primary); /* #910d0f */
+  --color-interactive-hover: var(--color-brand-hover); /* #7a0b0c */
+  --color-interactive-pressed: var(--color-brand-hover); /* #7a0b0c */
+  --color-interactive-disabled: var(--color-surface-disabled); /* #d9dbdd */
+  --color-interactive-focus: var(--color-brand-primary); /* #910d0f */
+
+  /* Background States */
+  --color-bg-pressed: hsl(
+    var(--bg-pressed-h),
+    var(--bg-pressed-s),
+    var(--bg-pressed-l)
+  ); /* #c5c0ba */
+
+  /* Border Colors */
+  --color-border-default: var(--color-text-muted); /* #6c737a */
+  --color-border-subtle: var(--color-text-muted); /* #6c737a */
+  --color-border-strong: var(--color-text-secondary); /* #3d444d */
+  --color-border-accent: var(--color-brand-primary); /* #910d0f */
+  --color-border-focus: var(--color-brand-primary); /* #910d0f */
+
+  /* Legacy Support - Mapped to core colors */
+  --color-background: var(--color-surface-primary); /* #f6f3ef */
+  --color-background-alt: var(--color-surface-secondary); /* #e9e4dd */
+  --color-background-hover: var(--color-surface-secondary); /* #e9e4dd */
+  --color-text: var(--color-text-primary); /* #101213 */
+  --color-accent: var(--color-brand-primary); /* #910d0f */
+  --color-accent-dark: var(--color-brand-hover); /* #7a0b0c */
+  --color-border: var(--color-border-default); /* #6c737a */
+
+  /* ==========================================================================
+     SPACING SYSTEM - True 8px Grid Base (with micro token)
+     ========================================================================== */
+
+--spacing-8: 0.5rem;    /* 8px  - foundation / tight spacing */
+--spacing-12: 0.75rem;  /* 12px - compact spacing */
+--spacing-16: 1rem;     /* 16px - comfortable minimal spacing */
+--spacing-20: 1.25rem;  /* 20px - between small and medium */
+--spacing-24: 1.5rem;   /* 24px - small spacing */
+--spacing-28: 1.75rem;  /* 28px - slightly wider small spacing */
+--spacing-32: 2rem;     /* 32px - medium spacing */
+--spacing-40: 2.5rem;   /* 40px - between medium and large */
+--spacing-48: 3rem;     /* 48px - large spacing */
+--spacing-56: 3.5rem;   /* 56px - sub-large spacing */
+--spacing-64: 4rem;     /* 64px - extra large spacing */
+--spacing-80: 5rem;     /* 80px - section spacing */
+--spacing-96: 6rem;     /* 96px - large section spacing */
+--spacing-128: 8rem;    /* 128px - hero / full section spacing */
+
+  /* Header specific */
+  --header-height: 3.5rem; /* 64px - extra large spacing */
+
+  /* Inter-block spacing token (default vertical gap between components) */
+  --gap-block: var(--spacing-32); /* 32px by default */
+
+  /* ==========================================================================
+     MERGED TYPOGRAPHY SYSTEM - Base Text (A) + Headings (B)
+     ========================================================================== */
+
+  /* Base Text Scale (Version A sizes) - rem-based, 16px root */
+  --font-size-12: 0.75rem; /* 12px - micro text */
+  --font-size-14: 0.875rem; /* 14px - small captions, labels */
+  --font-size-16: 1rem; /* 16px - secondary text */
+  --font-size-18: 1.125rem; /* 18px - default body text */
+  --font-size-20: 1.25rem; /* 20px - comfortable reading text */
+  --font-size-22: 1.375rem; /* 22px - large body text */
+  --font-size-24: 1.5rem; /* 24px - lead paragraph */
+
+  /* Heading Scale (Version B sizes) - refined progression */
+  --font-size-26: 1.625rem; /* 26px */
+  --font-size-28: 1.75rem; /* 28px - section headings */
+  --font-size-30: 1.875rem; /* 30px */
+  --font-size-32: 2rem; /* 32px - small headings/subtitles */
+  --font-size-34: 2.125rem; /* 34px */
+  --font-size-36: 2.25rem; /* 36px */
+  --font-size-38: 2.375rem; /* 38px - medium headings */
+  --font-size-40: 2.5rem; /* 40px */
+  --font-size-42: 2.625rem; /* 42px */
+  --font-size-44: 2.75rem; /* 44px */
+  --font-size-46: 2.875rem; /* 46px - large headings */
+  --font-size-48: 3rem; /* 48px */
+  --font-size-50: 3.125rem; /* 50px */
+  --font-size-52: 3.25rem; /* 52px */
+  --font-size-54: 3.375rem; /* 54px */
+  --font-size-56: 3.5rem; /* 56px */
+  --font-size-58: 3.625rem; /* 58px */
+  --font-size-60: 3.75rem; /* 60px - major headings */
+  --font-size-64: 4rem; /* 64px */
+  --font-size-68: 4.25rem; /* 68px */
+  --font-size-72: 4.5rem; /* 72px */
+  --font-size-76: 4.75rem; /* 76px - display headings */
+  --font-size-84: 5.25rem; /* 84px */
+  --font-size-92: 5.75rem; /* 92px */
+  --font-size-100: 6.25rem; /* 100px */
+  --font-size-108: 6.75rem; /* 108px - hero/statement text */
+  --font-size-116: 7.25rem; /* 116px */
+  --font-size-124: 7.75rem; /* 124px */
+
+  /* ==========================================================================
+     LINE-HEIGHT TOKENS - Multiples of 4px for Harmony
+     ========================================================================== */
+
+  /* Base Text Scale Line-Heights - Optimized for Gallery Aesthetic */
+  --lh-14: 1.714286; /* 14px × 1.714286 = 24px (6 × 4px) - generous small text */
+  --lh-16: 1.75; /* 16px × 1.75 = 28px (7 × 4px) - comfortable secondary */
+  --lh-18: 1.777778; /* 18px × 1.777778 = 32px (8 × 4px) - spacious body reading */
+  --lh-24: 1.5; /* 24px × 1.5 = 36px (9 × 4px) - balanced large text */
+  --lh-28: 1.428571; /* 28px × 1.428571 = 40px (10 × 4px) - section header presence */
+
+  /* Heading Scale Line-Heights - Airy but Impactful */
+  --lh-32: 1.375; /* 32px × 1.375 = 44px (11 × 4px) - generous H5 */
+  --lh-38: 1.368421; /* 38px × 1.368421 = 52px (13 × 4px) - comfortable H4 */
+  --lh-46: 1.304348; /* 46px × 1.304348 = 60px (15 × 4px) - spacious H3 */
+  --lh-60: 1.266667; /* 60px × 1.266667 = 76px (19 × 4px) - airy H2 */
+  --lh-76: 1.210526; /* 76px × 1.210526 = 92px (23 × 4px) - generous H1 */
+  --lh-108: 1.222222; /* 108px × 1.222222 = 132px (33 × 4px) - dramatic with breathing room */
+
+  /* Semantic Line-Height Aliases - Clear Hierarchy */
+  --line-height-tight: var(--lh-108); /* 1.111 - hero impact */
+  --line-height-display: var(--lh-76); /* 1.158 - H1, H2 */
+  --line-height-heading: var(--lh-46); /* 1.217 - H3, H4 */
+  --line-height-subheading: var(--lh-32); /* 1.375 - H5 */
+  --line-height-section: var(--lh-28); /* 1.429 - section headers */
+  --line-height-normal: var(--lh-18); /* 1.556 - body text */
+  --line-height-loose: var(--lh-16); /* 1.75 - secondary text */
+
+  /* Gallery-specific aliases */
+  --line-height-gallery: var(--lh-18); /* 1.556 - exhibition descriptions */
+  --line-height-metadata: var(--lh-14); /* 2.0 - artwork details */
+
+  /* ==========================================================================
+     Icon Sizes - 8px Grid Aligned (UNCHANGED)
+     ========================================================================== */
+  --icon-xs: 12px; /* Small input icons */
+  --icon-sm: 16px; /* Secondary icons */
+  --icon-md: 20px; /* Standard icons */
+  --icon-lg: 24px; /* Large icons */
+  --icon-xl: 32px; /* Extra large icons */
+
+  /* ==========================================================================
+     Font Families & Weights (Erewhon refresh)
+     ========================================================================== */
+  --font-heading: "Publico Headline", Georgia, serif;
+  --font-body: "Publico Text", "Publico Headline", Georgia, serif;
+  --font-caption: var(--font-body);
+  --font-heading-light: "Publico Headline Light", "Publico Headline", Georgia, serif;
+
+  /* Font weights - limited to available cuts */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 500; /* Placeholder until heavier weights land */
+
+  /* ==========================================================================
+     BUTTON SYSTEM - 8px Grid Aligned (UNCHANGED)
+     ========================================================================== */
+
+  /* Button padding - 8px grid aligned */
+  --button-padding-large-v: 1.5rem; /* 24px vertical */
+  --button-padding-large-h: 3rem; /* 48px horizontal */
+  --button-padding-medium-v: 1rem; /* 16px vertical */
+  --button-padding-medium-h: 2rem; /* 32px horizontal */
+  --button-padding-small-v: 0.75rem; /* 12px vertical */
+  --button-padding-small-h: 1.5rem; /* 24px horizontal */
+
+  /* Button heights - 8px grid aligned */
+  --button-height-large: 56px; /* 7 × 8px = 56px */
+  --button-height-medium: 48px; /* 6 × 8px = 48px */
+  --button-height-small: 40px; /* 5 × 8px = 40px */
+
+  /* ==========================================================================
+     Layout (UNCHANGED)
+     ========================================================================== */
+  --container-max: 1400px;
+  --container-narrow: 80ch; /* slightly wider reading/content container */
+  --container-wide: 1800px;
+
+  /* Reading width tokens */
+  --reading-min: 60ch;
+  --reading-ideal: 72ch;
+  --reading-max: 75ch;
+
+  /* Grid gaps - using spacing system */
+  --grid-gap-sm: var(--spacing-32); /* 32px */
+  --grid-gap-md: var(--spacing-48); /* 48px */
+  --grid-gap-lg: var(--spacing-64); /* 64px */
+
+  /* ==========================================================================
+     Borders & Effects (UNCHANGED)
+     ========================================================================== */
+  --border-width: 1px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  /* ==========================================================================
+     Z-Index Scale (UNCHANGED)
+     ========================================================================== */
+  --z-base: 0;
+  --z-dropdown: 50;
+  --z-sticky: 100;
+  --z-fixed: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-notification: 500;
+
+  /* ==========================================================================
+     Breakpoints (UNCHANGED)
+     ========================================================================== */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-xxl: 1536px;
+
+  /* ==========================================================================
+     Utility Custom Properties (UNCHANGED)
+     ========================================================================== */
+  /* Site gutters (fluid via clamp) */
+  --site-gutter-min: 16px;
+  --site-gutter-max: 64px;
+  --site-gutter-x: clamp(var(--site-gutter-min), 4vw, var(--site-gutter-max));
+
+  /* Full width minus gutters: for full-bleed sections keeping padding */
+  --content-width: calc(100vw - (var(--site-gutter-x) * 2));
+
+  /* Responsive type scale ratio */
+  --type-scale: 1.25; /* Major third - mathematical basis for scaling */
+
+  /* Aspect ratios */
+  --aspect-square: 1;
+  --aspect-video: 16 / 9;
+  --aspect-portrait: 3 / 4;
+  --aspect-landscape: 4 / 3;
+}
+
+/* ==========================================================================
+   NOTE: Keep this file tokens-only. No global element styles here.
+   Global html/body and typography rules live in _reset.css/_typography.css
+   ========================================================================== */
+
+/* ==========================================================================
+   MOBILE RESPONSIVE SCALING - UPDATED FOR MERGED SYSTEM
+   ========================================================================== */
+@media (max-width: 640px) {
+  /* CSS Variables updates for mobile - INSIDE :root selector */
+  :root {
+    /* Icon sizes for mobile - 8px aligned */
+    --icon-xs: 12px; /* Same */
+    --icon-sm: 16px; /* Same */
+    --icon-md: 16px; /* Reduced from 20px */
+    --icon-lg: 20px; /* Reduced from 24px */
+    --icon-xl: 24px; /* Reduced from 32px */
+
+    /* Mobile spacing - tighter but still 8px grid */
+    --spacing-8: 0.5rem; /* 8px - foundation */
+    --spacing-12: 0.5rem; /* 8px - very tight on mobile */
+    --spacing-16: 0.75rem; /* 12px - minimum on mobile */
+    --spacing-20: 1rem; /* 16px - comfortable on mobile */
+    --spacing-32: 1.25rem; /* 20px - medium on mobile */
+    --spacing-48: 1.5rem; /* 24px - large on mobile */
+    --spacing-64: 2rem; /* 32px - extra large on mobile */
+    --spacing-96: 3rem; /* 48px - section spacing on mobile */
+    --spacing-128: 4rem; /* 64px - hero spacing on mobile */
+
+    /* Mobile button system - 8px aligned */
+    --button-padding-large-v: 1rem; /* 16px vertical */
+    --button-padding-large-h: 2rem; /* 32px horizontal */
+    --button-padding-medium-v: 0.75rem; /* 12px vertical */
+    --button-padding-medium-h: 1.5rem; /* 24px horizontal */
+    --button-padding-small-v: 0.5rem; /* 8px vertical */
+    --button-padding-small-h: 1rem; /* 16px horizontal */
+
+    /* Mobile button heights - 8px aligned */
+    --button-height-large: 48px; /* 6 × 8px = 48px */
+    --button-height-medium: 40px; /* 5 × 8px = 40px */
+    --button-height-small: 32px; /* 4 × 8px = 32px */
+
+    /* Adjust gutter clamp bounds on compact screens */
+    --site-gutter-min: 14px;
+    --site-gutter-max: 32px;
+  }
+}
+
+/* Tablet intermediate scaling - maintaining proportions */
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* CSS Variables updates for tablet - INSIDE :root selector */
+  :root {
+    /* Tablet-specific icon adjustments */
+    --icon-lg: 20px;
+    --icon-xl: 24px;
+  }
+}
+
+/* ==========================================================================
+   MERGED TYPOGRAPHY SYSTEM DOCUMENTATION
+   ========================================================================== */
+/*
+  SYSTEM PHILOSOPHY:
+  
+  This merged system combines:
+  - Base text sizes from Version A (14px, 16px, 18px, 24px, 28px)
+  - Heading sizes from Version B (32px, 38px, 46px, 60px, 76px, 108px)
+  - All line-heights are multiples of 4px for visual harmony
+  - Body text maintains 18px for optimal readability
+  - Headings use refined, elegant proportions
+  
+  HIERARCHY FLOW:
+  Hero (108px) → H1 (76px) → H2 (60px) → H3 (46px) → H4 (38px) → H5 (32px)
+  → Section (28px) → Large (24px) → Body (18px) → Small (16px) → XS (14px)
+  
+  LINE-HEIGHT BENEFITS:
+  - Body text: Generous spacing optimized for gallery aesthetic and readability
+  - Varied line-heights for different contexts (no forced uniformity)
+  - Heading line-heights balance airiness with visual impact  
+  - All computed values align to 4px grid for mathematical harmony
+  
+  MOBILE ADAPTATION:
+  - Body text reduces to 16px on mobile (from 18px desktop)
+  - Line-heights maintain proportional generosity
+  - Spacing system scales appropriately for smaller screens
+  
+  USAGE EXAMPLES:
+  
+  body { 
+    font-size: var(--font-size-18);        // 18px
+    line-height: var(--line-height-normal);  // 1.777778 = 32px
+  }
+  
+  h1 { 
+    font-size: var(--font-size-76);         // 76px
+    line-height: var(--line-height-display); // 1.210526 = 92px
+  }
+  
+  h5 { 
+    font-size: var(--font-size-32);          // 32px
+    line-height: var(--line-height-subheading); // 1.375 = 44px
+  }
+  
+  .caption { 
+    font-size: var(--font-size-14);         // 14px
+    line-height: var(--line-height-metadata); // 1.714286 = 24px
+  }
+*/
