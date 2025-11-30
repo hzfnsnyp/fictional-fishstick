@@ -392,12 +392,12 @@ export default defineComponent({
   /* Visual Grouping: Bio/Projects/Artworks, Exhibitions/Media, Privacy/Terms */
   /* Group 2: Exhibitions, Media (li 4, 5) - add space before Exhibitions */
   .footer__nav-list li:nth-child(4) {
-    margin-top: var(--spacing-24);
+    margin-top: var(--spacing-28);
   }
 
   /* Group 3: Privacy Policy, Terms of Use (li 6, 7) - add space before Privacy */
   .footer__nav-list li:nth-child(6) {
-    margin-top: var(--spacing-24);
+    margin-top: var(--spacing-28);
   }
 
   .footer__nav-link {
