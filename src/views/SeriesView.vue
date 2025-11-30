@@ -1,5 +1,5 @@
 <template>
-  <main class="main-content flow main-content--flow-compact main-content--flow-mobile-tight series-page">
+  <main class="main-content flow series-page">
     <h1 class="sr-only">Projects</h1>
     <section
       v-for="series in seriesSections"

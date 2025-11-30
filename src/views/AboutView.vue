@@ -1,8 +1,7 @@
 <template>
-  <main class="main-content flow main-content--flow-loose about-page">
-    <h1 class="sr-only">Biography</h1>
-
+  <main class="main-content flow about-page">
     <AboutBiographySection
+      style="--flow-space: var(--spacing-96)"
       :heading="biographySection.heading"
       :eyebrow="biographySection.eyebrow"
       :paragraphs="biographySection.paragraphs"
@@ -16,12 +15,14 @@
       container="wide"
       sr-heading="Projects in focus"
       :items="seriesItems"
+      style="--flow-space: var(--spacing-96)"
     />
 
     <ArtistStatementSection
       container="content"
       :heading="statementBlock.heading"
       :paragraphs="statementBlock.paragraphs"
+      style="--flow-space: var(--spacing-96)"
     />
 
   </main>

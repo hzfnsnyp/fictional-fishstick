@@ -21,15 +21,17 @@
       :quote-author="practicePhasesBlock.quoteAuthor"
       :body="practicePhasesBlock.body"
       :phases="practicePhasesBlock.timeline"
-    />
-
-    <div class="layout-content about-cta">
-      <ButtonComponent variant="secondary" size="large" @click="goToAbout">
-        Full Biography
-      </ButtonComponent>
-    </div>
+      style="--flow-space: var(--spacing-96)"
+    >
+      <template #cta>
+        <ButtonComponent variant="itinerary" @click="goToAbout">
+          Full Biography
+        </ButtonComponent>
+      </template>
+    </NarrativeSection>
 
     <PracticeHighlightsSection
+      style="--flow-space: var(--spacing-96)"
       :image-src="practiceBlock.imageSrc"
       :image-alt="practiceBlock.imageAlt"
       :stats="practiceBlock.stats"
@@ -37,12 +39,14 @@
 
     <SeriesOverviewSection
       :items="seriesItems"
+      style="--flow-space: var(--spacing-96)"
     />
 
     <TechniquesOverviewSection
       container="wide"
       :statement="techniquesBlock.statement"
       :features="techniquesBlock.features"
+      style="--flow-space: var(--spacing-96)"
     />
 
     <section class="home-artworks" style="--flow-space: 0">
@@ -50,8 +54,7 @@
         <ArtworkCarousel :slides="artworkSlides" />
         <div class="home-artworks__cta">
           <ButtonComponent
-            variant="primary"
-            size="medium"
+            variant="itinerary"
             @click="goToArtworks"
           >
             View all artworks
@@ -262,12 +265,6 @@ onMounted(async () => {
   padding-block: var(--spacing-64);
   display: grid;
   gap: var(--spacing-32);
-}
-
-.about-cta {
-  margin-top: var(--spacing-24);
-  display: flex;
-  justify-content: flex-start;
 }
 
 .home-artworks__inner {

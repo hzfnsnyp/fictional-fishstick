@@ -1,8 +1,8 @@
 <template>
-  <main class="main-content flow main-content--flow-none">
-    <h1 class="sr-only">Artworks Gallery</h1>
+  <main class="main-content flow">
+    <h1 class="page-title">Artworks</h1>
 
-    <section class="layout-main layout-main--filters">
+    <section class="layout-main layout-main--filters" style="--flow-space: var(--spacing-48)">
       <ArtworkFilterPanel
         :year-options="yearOptions"
         :series-options="seriesOptions"

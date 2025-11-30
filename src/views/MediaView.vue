@@ -1,5 +1,5 @@
 <template>
-  <main class="main-content flow main-content--flow-loose media-page">
+  <main class="main-content flow media-page">
     <h1 class="sr-only">Media Archive</h1>
 
     <section class="layout-content media-header">

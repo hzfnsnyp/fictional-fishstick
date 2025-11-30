@@ -1,7 +1,7 @@
 <template>
-  <main class="main-content flow main-content--flow-compact">
-    <h1 class="sr-only">Exhibitions</h1>
-    <ExhibitionsArchive :exhibitions="exhibitionsArchive" />
+  <main class="main-content flow">
+    <h1 class="page-title">Exhibitions</h1>
+    <ExhibitionsArchive :exhibitions="exhibitionsArchive" style="--flow-space: var(--spacing-48)" />
   </main>
 </template>
 

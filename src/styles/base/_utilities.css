@@ -124,6 +124,23 @@
 }
 
 /* ==========================================================================
+   Page Title System
+   Unified page title styling and positioning for all pages (except hero pages)
+   ========================================================================== */
+.page-title {
+  margin-top: 0;
+  margin-bottom: var(--spacing-48);
+  padding-top: var(--spacing-64);
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    padding-top: var(--spacing-48);
+    margin-bottom: var(--spacing-32);
+  }
+}
+
+/* ==========================================================================
    Flow Layout Utility
    Consistent vertical rhythm between direct children using --flow-space.
    Supply --flow-space via utilities, components, or inline styles.

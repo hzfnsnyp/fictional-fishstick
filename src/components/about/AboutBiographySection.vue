@@ -4,7 +4,7 @@
       <div class="about-bio__main">
         <header class="about-bio__header">
           <p v-if="eyebrow" class="about-bio__eyebrow">{{ eyebrow }}</p>
-          <h2 id="about-bio-title" class="about-bio__title">{{ heading }}</h2>
+          <h1 id="about-bio-title" class="about-bio__title page-title">{{ heading }}</h1>
         </header>
 
         <div class="about-bio__body">
@@ -79,7 +79,13 @@ export default {
 
 <style scoped>
 .about-bio {
-  padding-block: var(--spacing-96);
+  padding-bottom: var(--spacing-96);
+}
+
+@media (max-width: 768px) {
+  .about-bio {
+    padding-bottom: var(--spacing-64);
+  }
 }
 
 .about-bio__grid {

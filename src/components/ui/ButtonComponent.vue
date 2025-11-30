@@ -34,7 +34,7 @@ export default defineComponent({
       type: String,
       default: "primary",
       validator: (value) =>
-        ["primary", "secondary", "tertiary"].includes(value),
+        ["primary", "secondary", "tertiary", "itinerary"].includes(value),
     },
     size: {
       type: String,
@@ -216,6 +216,33 @@ export default defineComponent({
 .btn--tertiary:active:not(.btn--disabled):not(.btn--loading) {
   color: var(--color-brand-hover);
   text-decoration: underline;
+}
+
+/* ==========================================================================
+   ITINERARY BUTTON - Italic text link style
+   ========================================================================== */
+.btn--itinerary {
+  background: transparent;
+  border-color: transparent;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  padding: 0;
+  min-height: auto;
+  font-family: var(--font-body);
+  font-size: var(--font-size-18);
+  line-height: var(--line-height-normal);
+  font-weight: var(--font-weight-regular);
+  font-style: italic;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn--itinerary:hover:not(.btn--disabled):not(.btn--loading) {
+    color: var(--color-brand-primary);
+  }
+}
+
+.btn--itinerary:active:not(.btn--disabled):not(.btn--loading) {
+  color: var(--color-brand-hover);
 }
 
 /* ==========================================================================

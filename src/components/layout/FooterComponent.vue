@@ -386,17 +386,23 @@ export default defineComponent({
   }
 
   .footer__nav-list li {
-    margin: var(--spacing-12) 0 0 0;
+    margin: var(--spacing-8) 0 0 0;
   }
 
-  /* Grouping: keep pairs tight, add only group separators */
+  /* Visual Grouping: Bio/Projects/Artworks, Exhibitions/Media, Privacy/Terms */
   .footer__nav-list li:first-child {
     margin-top: 0;
   }
-  .footer__nav-list li:nth-child(3),
-  .footer__nav-list li:nth-child(5),
-  .footer__nav-list li:nth-child(7) {
-    margin-top: 0;
+
+  /* Group 1: Biography, Projects, Artworks (li 1, 2, 3) */
+  /* Group 2: Exhibitions, Media (li 4, 5) - add space before Exhibitions */
+  .footer__nav-list li:nth-child(4) {
+    margin-top: var(--spacing-24);
+  }
+
+  /* Group 3: Privacy Policy, Terms of Use (li 6, 7) - add space before Privacy */
+  .footer__nav-list li:nth-child(6) {
+    margin-top: var(--spacing-24);
   }
 
   .footer__nav-link {

@@ -32,6 +32,11 @@
         </p>
       </div>
     </div>
+
+    <!-- Optional CTA slot -->
+    <div v-if="$slots.cta" class="about-story__cta">
+      <slot name="cta"></slot>
+    </div>
   </section>
 </template>
 
@@ -182,6 +187,12 @@ export default {
 .about-phase__description {
   margin: 0;
   color: var(--color-text-primary);
+}
+
+.about-story__cta {
+  margin-top: var(--spacing-32);
+  display: flex;
+  justify-content: flex-start;
   line-height: var(--line-height-normal);
 }
 
