@@ -403,8 +403,8 @@ export default defineComponent({
   .footer__nav-link {
     font-size: var(--font-size-18);
     font-weight: var(--font-weight-regular);
-    line-height: 1.2;
-    padding: 0;
+    line-height: 1.4;
+    padding: var(--spacing-8) 0;
     min-height: 0 !important;
     min-width: 0 !important;
     display: block !important;
