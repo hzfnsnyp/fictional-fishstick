@@ -125,6 +125,8 @@ export default {
 .about-bio__aside {
   display: grid;
   gap: var(--spacing-32);
+  /* Align top with first line of body text */
+  align-self: start;
 }
 
 .about-bio__figure {
@@ -168,7 +170,12 @@ export default {
   padding: 0;
   list-style: none;
   display: grid;
-  gap: var(--spacing-12);
+  gap: 0;
+}
+
+.about-bio__downloads li {
+  margin: 0;
+  padding: 0;
 }
 
 .about-bio__download-link {
@@ -178,6 +185,8 @@ export default {
   display: inline-flex;
   gap: var(--spacing-4);
   align-items: baseline;
+  padding: 0;
+  margin: 0;
 }
 
 .about-bio__download-link:hover {
