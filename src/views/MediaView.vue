@@ -134,23 +134,6 @@ onMounted(async () => {
 .media-header {
   display: grid;
   gap: var(--spacing-12);
-  padding-top: var(--spacing-80);
-  padding-bottom: var(--spacing-32);
-}
-
-.media-eyebrow {
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-14);
-}
-
-.media-title {
-  margin: 0;
-  font-family: var(--font-heading);
-  font-weight: var(--font-weight-light);
-  font-size: var(--font-size-48);
 }
 
 .media-lede {
@@ -163,14 +146,6 @@ onMounted(async () => {
 @media (max-width: 768px) {
   .media-page {
     padding-bottom: var(--spacing-64);
-  }
-
-  .media-header {
-    padding-top: var(--spacing-56);
-  }
-
-  .media-title {
-    font-size: var(--font-size-38);
   }
 
   .media-lede {
