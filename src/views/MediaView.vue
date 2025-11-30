@@ -1,23 +1,23 @@
 <template>
   <main class="main-content flow media-page">
-    <h1 class="sr-only">Media Archive</h1>
+    <div class="layout-content">
+      <h1 class="page-title">Media</h1>
+    </div>
 
-    <section class="layout-content media-header">
-      <p class="media-eyebrow">Media</p>
-      <h2 class="media-title">Archive</h2>
+    <section class="layout-content media-header" style="--flow-space: var(--spacing-32)">
       <p class="media-lede">
         Catalogs, publications, press, and broadcasts documenting the practice.
       </p>
     </section>
 
-    <FeaturedMagazinesList container="wide" :items="featuredMagazines" />
-    <FeaturedPressList container="wide" :items="featuredPress" />
-    <FeaturedRadioList container="wide" :items="featuredRadio" />
+    <FeaturedMagazinesList container="wide" :items="featuredMagazines" style="--flow-space: var(--spacing-64)" />
+    <FeaturedPressList container="wide" :items="featuredPress" style="--flow-space: var(--spacing-64)" />
+    <FeaturedRadioList container="wide" :items="featuredRadio" style="--flow-space: var(--spacing-64)" />
 
-    <ExhibitionsArchive :exhibitions="exhibitionsArchive" />
-    <MagazinesArchive :items="magazinesArchive" />
-    <PressArchive :items="pressArchive" />
-    <RadioArchive :items="radioArchive" />
+    <ExhibitionsArchive :exhibitions="exhibitionsArchive" style="--flow-space: var(--spacing-96)" />
+    <MagazinesArchive :items="magazinesArchive" style="--flow-space: var(--spacing-96)" />
+    <PressArchive :items="pressArchive" style="--flow-space: var(--spacing-96)" />
+    <RadioArchive :items="radioArchive" style="--flow-space: var(--spacing-96)" />
   </main>
 </template>
 

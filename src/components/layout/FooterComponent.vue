@@ -386,15 +386,10 @@ export default defineComponent({
   }
 
   .footer__nav-list li {
-    margin: var(--spacing-8) 0 0 0;
+    margin: 0;
   }
 
   /* Visual Grouping: Bio/Projects/Artworks, Exhibitions/Media, Privacy/Terms */
-  .footer__nav-list li:first-child {
-    margin-top: 0;
-  }
-
-  /* Group 1: Biography, Projects, Artworks (li 1, 2, 3) */
   /* Group 2: Exhibitions, Media (li 4, 5) - add space before Exhibitions */
   .footer__nav-list li:nth-child(4) {
     margin-top: var(--spacing-24);
@@ -408,8 +403,9 @@ export default defineComponent({
   .footer__nav-link {
     font-size: var(--font-size-18);
     font-weight: var(--font-weight-regular);
-    line-height: var(--line-height-normal);
-    padding: var(--spacing-8) 0;
+    line-height: 1.2;
+    padding: 0;
+    display: block;
     color: var(--color-text-primary) !important;
   }
 
