@@ -27,11 +27,6 @@ const router = createRouter({
     { path: '/privacy-policy', name: 'privacy', component: PrivacyPolicyView },
     { path: '/terms-of-use', name: 'terms', component: TermsOfUseView },
 
-    // TEMPORARY: Test routes for error pages (remove after testing)
-    { path: '/test-404', name: 'test-404', component: NotFoundView },
-    { path: '/test-maintenance', name: 'test-maintenance', component: MaintenanceView },
-    { path: '/test-error', name: 'test-error', component: ErrorFallback },
-
     // 404 catch-all route (must be last)
     { path: '/:pathMatch(.*)*', name: 'not-found', component: NotFoundView },
   ],

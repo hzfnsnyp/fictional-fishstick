@@ -92,7 +92,7 @@ import ButtonComponent from '@/components/ui/ButtonComponent.vue'
 import CollapsibleSection from '@/components/ui/CollapsibleSection.vue'
 import { useLightbox } from '@/composables/useLightbox'
 import { useSEO } from '@/composables/useSEO'
-import { useSeries } from '@/composables/useStrapi'
+import { useSeries } from '@/composables/useSeries'
 import { useSeriesData } from '@/composables/useCMSData'
 
 const router = useRouter()
@@ -118,8 +118,8 @@ const fallbackSlides = [
 const fallbackSeries = [
   {
     slug: 'project-placeholder',
-    heading: { line1: 'Project placeholder', line2: 'Add projects in Strapi', line3: '' },
-    paragraphs: ['Projects content will load from Strapi.'],
+    heading: { line1: 'Project placeholder', line2: 'Add projects in Sanity', line3: '' },
+    paragraphs: ['Projects content will load from Sanity.'],
     periodLabel: '2024–present',
     medium: 'Mixed media',
     dimensions: 'Various',
@@ -159,7 +159,7 @@ const seriesSections = computed(() => {
         line2: data.description?.slice(0, 120),
         line3: ''
       },
-      paragraphs: data.description ? [data.description] : ['Add description in Strapi.'],
+      paragraphs: data.description ? [data.description] : ['Add description in Sanity.'],
       periodLabel,
       medium: data.metadata?.find(meta => meta.label === 'medium')?.value || data.description,
       dimensions: data.metadata?.find(meta => meta.label === 'dimensions')?.value || '',

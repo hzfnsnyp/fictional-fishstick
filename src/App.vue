@@ -25,7 +25,7 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import HeaderComponent from './components/layout/HeaderComponent.vue'
 import FooterComponent from './components/layout/FooterComponent.vue'
-import { useGlobalStatus, useGlobalSettings } from '@/composables/useStrapi'
+import { useGlobalStatus, useGlobalSettings } from '@/composables/useSanity'
 
 const router = useRouter()
 const route = useRoute()

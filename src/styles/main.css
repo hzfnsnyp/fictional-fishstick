@@ -21,6 +21,3 @@
 
 /* 7. WCAG focus */
 @import './base/_focus_styles.css';
-
-/* 8. Debug helpers (opt-in) */
-@import './base/_debug_spacing.css';

@@ -1,102 +1,63 @@
 /**
- * Composable for managing Artworks from Payload CMS
+ * Composable for managing Artworks from Sanity CMS
  */
 
-import { usePayloadAPI } from './usePayloadAPI';
+import { ref } from 'vue'
+import { getArtworks, getFeaturedArtworks } from '@/services/api'
 
 export function useArtworks() {
-  const {
-    data: artworks,
-    loading,
-    error,
-    fetchAll,
-    fetchById,
-    fetchBySlug,
-  } = usePayloadAPI('artworks');
+  const artworks = ref(null)
+  const loading = ref(false)
+  const error = ref(null)
 
   /**
-   * Fetch all artworks with optional filters
-   * @param {object} options - Filter options
-   * @param {string} options.seriesId - Filter by series ID
-   * @param {string} options.status - Filter by status
-   * @param {number} options.limit - Limit results
-   * @param {string} options.sort - Sort field (e.g., '-createdAt')
+   * Fetch all artworks
    */
-  const getArtworks = async (options = {}) => {
-    const params = {
-      depth: 2, // Include related series, mediums
-      sort: '-year', // Default: newest first
-      ...options,
-    };
+  const fetchArtworks = async () => {
+    loading.value = true
+    error.value = null
 
-    // Build where clause
-    const where = {};
-
-    if (options.seriesId) {
-      where.series = { equals: options.seriesId };
+    try {
+      const data = await getArtworks()
+      artworks.value = data
+      return data
+    } catch (err) {
+      error.value = err.message
+      console.error('Failed to fetch artworks:', err)
+      throw err
+    } finally {
+      loading.value = false
     }
-
-    if (options.status) {
-      where.status = { equals: options.status };
-    }
-
-    if (Object.keys(where).length > 0) {
-      params.where = where;
-    }
-
-    return fetchAll(params);
-  };
-
-  /**
-   * Fetch single artwork by ID
-   * @param {string} id - Artwork ID
-   */
-  const getArtworkById = async (id) => {
-    return fetchById(id, { depth: 2 });
-  };
-
-  /**
-   * Fetch single artwork by slug
-   * @param {string} slug - Artwork slug
-   */
-  const getArtworkBySlug = async (slug) => {
-    const result = await fetchBySlug(slug, { depth: 2 });
-    return result?.docs?.[0] || null;
-  };
+  }
 
   /**
    * Fetch featured artworks
    * @param {number} limit - Number of artworks to fetch
    */
-  const getFeaturedArtworks = async (limit = 6) => {
-    return fetchAll({
-      where: {
-        featured: { equals: true },
-      },
-      limit,
-      depth: 2,
-      sort: '-year',
-    });
-  };
+  const fetchFeaturedArtworks = async (limit = 6) => {
+    loading.value = true
+    error.value = null
 
-  /**
-   * Fetch artworks by series
-   * @param {string} seriesId - Series ID
-   */
-  const getArtworksBySeries = async (seriesId) => {
-    return getArtworks({ seriesId, limit: 100 });
-  };
+    try {
+      const data = await getFeaturedArtworks(limit)
+      artworks.value = data
+      return data
+    } catch (err) {
+      error.value = err.message
+      console.error('Failed to fetch featured artworks:', err)
+      throw err
+    } finally {
+      loading.value = false
+    }
+  }
 
   return {
     artworks,
     loading,
     error,
-    getArtworks,
-    getArtworkById,
-    getArtworkBySlug,
-    getFeaturedArtworks,
-    getArtworksBySeries,
-  };
+    fetchArtworks,
+    fetchFeaturedArtworks,
+  }
 }
 
-export default useArtworks;
+export default useArtworks

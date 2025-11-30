@@ -32,7 +32,7 @@ import { computed, onMounted } from 'vue'
 import AboutBiographySection from '@/components/about/AboutBiographySection.vue'
 import ArtistStatementSection from '@/components/about/ArtistStatementSection.vue'
 import SeriesOverviewSection from '@/components/shared/SeriesOverviewSection.vue'
-import { usePage } from '@/composables/useStrapi'
+import { usePage } from '@/composables/useSanity'
 import { usePageContent } from '@/composables/useCMSData'
 import { useSEO } from '@/composables/useSEO'
 
@@ -66,7 +66,7 @@ const fallbackBiography = {
 const fallbackStatement = {
   heading: 'Artist Statement',
   paragraphs: [
-    'Replace with Strapi → Pages → About (Essay section).',
+    'Replace with Sanity → Pages → About (Essay section).',
     'Use this block for a concise statement pulled from CMS.'
   ]
 }
@@ -74,7 +74,7 @@ const fallbackStatement = {
 const fallbackSeries = [
   {
     title: 'Project placeholder',
-    description: 'Projects data will load from Strapi.',
+    description: 'Projects data will load from Sanity.',
     startYear: 2024,
     endYear: null,
     medium: 'Mixed media',
@@ -161,7 +161,7 @@ onMounted(async () => {
   } else {
     setSEO({
       title: 'About',
-      description: 'About page content will be loaded from Strapi.'
+      description: 'About page content will be loaded from Sanity.'
     })
   }
 })

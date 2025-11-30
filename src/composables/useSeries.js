@@ -1,84 +1,63 @@
 /**
- * Composable for managing Series from Payload CMS
+ * Composable for managing Series from Sanity CMS
  */
 
-import { usePayloadAPI } from './usePayloadAPI';
+import { ref } from 'vue'
+import { getSeries, getFeaturedSeries } from '@/services/api'
 
 export function useSeries() {
-  const {
-    data: series,
-    loading,
-    error,
-    fetchAll,
-    fetchById,
-    fetchBySlug,
-  } = usePayloadAPI('series');
+  const series = ref(null)
+  const loading = ref(false)
+  const error = ref(null)
 
   /**
-   * Fetch all series with optional filters
-   * @param {object} options - Filter options
-   * @param {boolean} options.featured - Filter featured series
-   * @param {number} options.limit - Limit results
-   * @param {string} options.sort - Sort field
+   * Fetch all series
    */
-  const getSeries = async (options = {}) => {
-    const params = {
-      depth: 1,
-      sort: '-startYear', // Default: newest first
-      ...options,
-    };
+  const fetchSeries = async () => {
+    loading.value = true
+    error.value = null
 
-    // Build where clause
-    const where = {};
-
-    if (options.featured !== undefined) {
-      where.featured = { equals: options.featured };
+    try {
+      const data = await getSeries()
+      series.value = data
+      return data
+    } catch (err) {
+      error.value = err.message
+      console.error('Failed to fetch series:', err)
+      throw err
+    } finally {
+      loading.value = false
     }
-
-    if (Object.keys(where).length > 0) {
-      params.where = where;
-    }
-
-    return fetchAll(params);
-  };
-
-  /**
-   * Fetch single series by ID
-   * @param {string} id - Series ID
-   */
-  const getSeriesById = async (id) => {
-    return fetchById(id, { depth: 2 });
-  };
-
-  /**
-   * Fetch single series by slug
-   * @param {string} slug - Series slug
-   */
-  const getSeriesBySlug = async (slug) => {
-    const result = await fetchBySlug(slug, { depth: 2 });
-    return result?.docs?.[0] || null;
-  };
+  }
 
   /**
    * Fetch featured series
    * @param {number} limit - Number of series to fetch
    */
-  const getFeaturedSeries = async (limit = 6) => {
-    return getSeries({
-      featured: true,
-      limit,
-    });
-  };
+  const fetchFeaturedSeries = async (limit = 3) => {
+    loading.value = true
+    error.value = null
+
+    try {
+      const data = await getFeaturedSeries(limit)
+      series.value = data
+      return data
+    } catch (err) {
+      error.value = err.message
+      console.error('Failed to fetch featured series:', err)
+      throw err
+    } finally {
+      loading.value = false
+    }
+  }
 
   return {
     series,
     loading,
     error,
-    getSeries,
-    getSeriesById,
-    getSeriesBySlug,
-    getFeaturedSeries,
-  };
+    fetchSeries,
+    fetchFeaturedSeries,
+  }
 }
 
-export default useSeries;
+export default useSeries

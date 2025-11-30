@@ -34,7 +34,7 @@
 import { onMounted } from 'vue'
 import ClickableTextComponent from '@/components/ui/ClickableTextComponent.vue'
 import { useSEO } from '@/composables/useSEO'
-import { useGlobalStatus } from '@/composables/useStrapi'
+import { useGlobalStatus } from '@/composables/useSanity'
 
 const { setSEO } = useSEO()
 const { status, fetchStatus } = useGlobalStatus()

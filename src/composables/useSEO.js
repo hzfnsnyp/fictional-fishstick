@@ -178,8 +178,8 @@ export function useSEO(options = {}) {
   };
 
   /**
-   * Set SEO from Payload CMS page data
-   * @param {object} page - Page data from Payload
+   * Set SEO from Sanity CMS page data
+   * @param {object} page - Page data from Sanity
    */
   const setSEOFromPage = (page) => {
     if (!page) return;

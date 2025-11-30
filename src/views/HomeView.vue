@@ -76,7 +76,7 @@ import ArtworkCarousel from '@/components/shared/ArtworkCarousel.vue'
 import ArtworkLightbox from '@/components/artworks/ArtworkLightbox.vue'
 import ButtonComponent from '@/components/ui/ButtonComponent.vue'
 import { useLightbox } from '@/composables/useLightbox'
-import { usePage } from '@/composables/useStrapi'
+import { usePage } from '@/composables/useSanity'
 import { usePageContent } from '@/composables/useCMSData'
 import { useSEO } from '@/composables/useSEO'
 import { useRouter } from 'vue-router'
@@ -135,7 +135,7 @@ const fallbackSections = {
   series: [
     {
       title: 'Project placeholder',
-      description: 'Populate with Strapi projects. This shows until CMS data is connected.',
+      description: 'Populate with Sanity projects. This shows until CMS data is connected.',
       startYear: 2024,
       endYear: null,
       medium: 'Mixed media',

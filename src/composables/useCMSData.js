@@ -3,7 +3,6 @@
  */
 
 import {computed} from 'vue'
-import {getStrapiImageUrl} from '@/utils/strapi'
 import {imageVariants} from '@/services/imageUrl'
 
 const formatDimensions = (width, height, depth) => {
@@ -20,7 +19,7 @@ const mapImages = images =>
     const node = img.attributes || img
     const variants = imageVariants(node)
     return {
-      src: variants.large || node.url || getStrapiImageUrl(img),
+      src: variants.large || node.url || '',
       thumb: variants.thumb || node.url,
       medium: variants.medium || node.url,
       alt: node.alt || node.alternativeText || '',
@@ -77,7 +76,7 @@ export function useSeriesData(series) {
       startYear: s.startYear,
       endYear: s.endYear,
       ongoing: s.ongoing,
-      coverImage: s.coverImage?.url || getStrapiImageUrl(s.coverImage),
+      coverImage: s.coverImage?.url || s.coverImage || '',
       metadata: s.metadata || [],
       catalogPdf: s.catalogPdf
         ? {
@@ -131,7 +130,7 @@ export function usePageContent(page) {
         return {
           type: 'hero-composer',
           title: section.title,
-          imageSrc: variants.large || section.image?.url || getStrapiImageUrl(section.image),
+          imageSrc: variants.large || section.image?.url || section.image || '',
           imageAlt: section.image?.alt || section.imageAlt || '',
           artworkTitle: section.artworkTitle,
           year: section.year,
@@ -149,7 +148,7 @@ export function usePageContent(page) {
           headingLine2: section.headingLine2,
           headingLine3: section.headingLine3,
           paragraphs: section.paragraphs || [],
-          signatureSrc: sigVariants.thumb || section.signature?.url || getStrapiImageUrl(section.signature),
+          signatureSrc: sigVariants.thumb || section.signature?.url || section.signature || '',
           signatureAlt: section.signature?.alt || section.signatureAlt || 'Signature',
         }
       }
@@ -159,7 +158,7 @@ export function usePageContent(page) {
         const variants = imageVariants(img)
         return {
           type: 'practice-highlights',
-          imageSrc: variants.medium || section.image?.url || getStrapiImageUrl(section.image),
+          imageSrc: variants.medium || section.image?.url || section.image || '',
           imageAlt: section.image?.alt || section.imageAlt || '',
           stats: section.stats || [],
         }

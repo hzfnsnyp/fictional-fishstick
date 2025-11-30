@@ -30,7 +30,8 @@ import RadioArchive from '@/components/archive/RadioArchive.vue'
 import FeaturedMagazinesList from '@/components/shared/FeaturedMagazinesList.vue'
 import FeaturedPressList from '@/components/shared/FeaturedPressList.vue'
 import FeaturedRadioList from '@/components/shared/FeaturedRadioList.vue'
-import { usePage, useExhibitions } from '@/composables/useStrapi'
+import { usePage } from '@/composables/useSanity'
+import { useExhibitions } from '@/composables/useExhibitions'
 import { usePageContent, useExhibitionData } from '@/composables/useCMSData'
 import { useSEO } from '@/composables/useSEO'
 
@@ -67,7 +68,7 @@ const fallbackMedia = {
 }
 
 const fallbackExhibitions = [
-  { id: 1, label: '2024', title: 'Exhibition placeholder', meta: 'Add exhibitions in Strapi', url: '' }
+  { id: 1, label: '2024', title: 'Exhibition placeholder', meta: 'Add exhibitions in Sanity', url: '' }
 ]
 
 const mediaByCategory = (category) =>
@@ -119,7 +120,7 @@ onMounted(async () => {
   } else {
     setSEO({
       title: 'Media',
-      description: 'Media archive content will be loaded from Strapi.'
+      description: 'Media archive content will be loaded from Sanity.'
     })
   }
 })

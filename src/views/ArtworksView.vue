@@ -48,7 +48,7 @@ import ArtworksGrid from '@/components/artworks/ArtworksGrid.vue'
 import ArtworkLightbox from '@/components/artworks/ArtworkLightbox.vue'
 import { useLightbox } from '@/composables/useLightbox'
 import { useSEO } from '@/composables/useSEO'
-import { useArtworks } from '@/composables/useStrapi'
+import { useArtworks } from '@/composables/useArtworks'
 import { useArtworkData } from '@/composables/useCMSData'
 
 const { lightboxItems, openLightbox } = useLightbox()

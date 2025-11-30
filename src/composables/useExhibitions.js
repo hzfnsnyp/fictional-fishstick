@@ -1,104 +1,62 @@
 /**
- * Composable for managing Exhibitions from Payload CMS
+ * Composable for managing Exhibitions from Sanity CMS
  */
 
-import { usePayloadAPI } from './usePayloadAPI';
+import { ref } from 'vue'
+import { getExhibitions, getFeaturedExhibition } from '@/services/api'
 
 export function useExhibitions() {
-  const {
-    data: exhibitions,
-    loading,
-    error,
-    fetchAll,
-    fetchById,
-    fetchBySlug,
-  } = usePayloadAPI('exhibitions');
+  const exhibitions = ref(null)
+  const loading = ref(false)
+  const error = ref(null)
 
   /**
-   * Fetch all exhibitions with optional filters
-   * @param {object} options - Filter options
-   * @param {string} options.type - Filter by exhibition type
-   * @param {boolean} options.upcoming - Filter upcoming exhibitions
-   * @param {number} options.limit - Limit results
+   * Fetch all exhibitions
    */
-  const getExhibitions = async (options = {}) => {
-    const params = {
-      depth: 2,
-      sort: '-startDate', // Default: newest first
-      ...options,
-    };
+  const fetchExhibitions = async () => {
+    loading.value = true
+    error.value = null
 
-    // Build where clause
-    const where = {};
-
-    if (options.type) {
-      where.type = { equals: options.type };
+    try {
+      const data = await getExhibitions()
+      exhibitions.value = data
+      return data
+    } catch (err) {
+      error.value = err.message
+      console.error('Failed to fetch exhibitions:', err)
+      throw err
+    } finally {
+      loading.value = false
     }
+  }
 
-    if (options.upcoming) {
-      where.startDate = { greater_than: new Date().toISOString() };
+  /**
+   * Fetch featured exhibition
+   */
+  const fetchFeaturedExhibition = async () => {
+    loading.value = true
+    error.value = null
+
+    try {
+      const data = await getFeaturedExhibition()
+      exhibitions.value = data ? [data] : []
+      return data
+    } catch (err) {
+      error.value = err.message
+      console.error('Failed to fetch featured exhibition:', err)
+      throw err
+    } finally {
+      loading.value = false
     }
-
-    if (Object.keys(where).length > 0) {
-      params.where = where;
-    }
-
-    return fetchAll(params);
-  };
-
-  /**
-   * Fetch single exhibition by ID
-   * @param {string} id - Exhibition ID
-   */
-  const getExhibitionById = async (id) => {
-    return fetchById(id, { depth: 2 });
-  };
-
-  /**
-   * Fetch single exhibition by slug
-   * @param {string} slug - Exhibition slug
-   */
-  const getExhibitionBySlug = async (slug) => {
-    const result = await fetchBySlug(slug, { depth: 2 });
-    return result?.docs?.[0] || null;
-  };
-
-  /**
-   * Fetch upcoming exhibitions
-   * @param {number} limit - Number of exhibitions
-   */
-  const getUpcomingExhibitions = async (limit = 5) => {
-    return getExhibitions({
-      upcoming: true,
-      limit,
-    });
-  };
-
-  /**
-   * Fetch past exhibitions
-   * @param {number} limit - Number of exhibitions
-   */
-  const getPastExhibitions = async (limit = 20) => {
-    return fetchAll({
-      where: {
-        startDate: { less_than: new Date().toISOString() },
-      },
-      limit,
-      depth: 2,
-      sort: '-startDate',
-    });
-  };
+  }
 
   return {
     exhibitions,
     loading,
     error,
-    getExhibitions,
-    getExhibitionById,
-    getExhibitionBySlug,
-    getUpcomingExhibitions,
-    getPastExhibitions,
-  };
+    fetchExhibitions,
+    fetchFeaturedExhibition,
+  }
 }
 
-export default useExhibitions;
+export default useExhibitions

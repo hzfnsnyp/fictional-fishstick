@@ -9,14 +9,14 @@
 import { computed, onMounted } from 'vue'
 import ExhibitionsArchive from '@/components/archive/ExhibitionsArchive.vue'
 import { useSEO } from '@/composables/useSEO'
-import { useExhibitions } from '@/composables/useStrapi'
+import { useExhibitions } from '@/composables/useExhibitions'
 import { useExhibitionData } from '@/composables/useCMSData'
 
 const { setSEO } = useSEO()
 const { exhibitions, fetchExhibitions } = useExhibitions()
 
 const fallbackExhibitions = [
-  { id: 1, label: '2024', title: 'Exhibition placeholder', meta: 'Add exhibitions in Strapi', url: '' }
+  { id: 1, label: '2024', title: 'Exhibition placeholder', meta: 'Add exhibitions in Sanity', url: '' }
 ]
 
 const exhibitionsArchive = computed(() => {
