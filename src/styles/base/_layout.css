@@ -1,0 +1,267 @@
+/* ==========================================================================
+   Unified Layout System - Rail Alignment (matches header gutters)
+   ========================================================================== */
+
+/*
+ * Primary container (no inner padding)
+ * Width = viewport minus rails (same as header). Content touches rails.
+ */
+.layout-main {
+  width: auto;
+  margin-inline-start: max(var(--site-gutter-x), env(safe-area-inset-left));
+  margin-inline-end: max(var(--site-gutter-x), env(safe-area-inset-right));
+  container-type: inline-size;
+}
+
+/* Wide container — identical rails to header, semantic alias for sections
+   Keeps content full-width between rails (no inner padding)
+*/
+.layout-wide {
+  width: auto;
+  margin-inline-start: max(var(--site-gutter-x), env(safe-area-inset-left));
+  margin-inline-end: max(var(--site-gutter-x), env(safe-area-inset-right));
+  container-type: inline-size;
+}
+
+/*
+ * Narrow container for reading content
+ * Width clamped by rails and max reading width
+ */
+.layout-narrow {
+  width: min(
+    var(--container-narrow),
+    calc(100% - (
+      max(var(--site-gutter-x), env(safe-area-inset-left)) +
+      max(var(--site-gutter-x), env(safe-area-inset-right))
+    ))
+  );
+  margin-inline: auto;
+  container-type: inline-size;
+}
+
+/* Content container alias (semantic) */
+.layout-content {
+  width: min(
+    var(--container-narrow),
+    calc(100% - (
+      max(var(--site-gutter-x), env(safe-area-inset-left)) +
+      max(var(--site-gutter-x), env(safe-area-inset-right))
+    ))
+  );
+  margin-inline: auto;
+  container-type: inline-size;
+}
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+
+/*
+ * Optional inner padding — opt-in when needed inside rails
+ */
+.with-inner-padding {
+  padding-inline-start: max(var(--site-gutter-x), env(safe-area-inset-left));
+  padding-inline-end: max(var(--site-gutter-x), env(safe-area-inset-right));
+}
+
+/* Backward-compat: noop for legacy usage */
+.no-inner-padding { /* deprecated: default is already no inner padding */ }
+
+/* 
+ * Remove left padding only
+ * Useful for content that should align to left edge of container
+ */
+.no-padding-start {
+  padding-inline-start: 0 !important;
+}
+
+/* 
+ * Remove right padding only
+ * Useful for content that should align to right edge of container
+ */
+.no-padding-end {
+  padding-inline-end: 0 !important;
+}
+
+/* 
+ * Optimal reading width for longform text
+ * Can be applied to any element within containers
+ */
+.prose {
+  max-width: var(--reading-ideal);
+  margin-inline: auto;
+}
+
+/* 
+ * Full-width background utility (if needed later)
+ * Paints background to screen edges while keeping content in grid
+ */
+.with-background {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+}
+
+.with-background::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset-block: 0;
+  left: calc(-1 * max(var(--site-gutter-x), env(safe-area-inset-left)));
+  right: calc(-1 * max(var(--site-gutter-x), env(safe-area-inset-right)));
+  width: auto;
+  background: var(--bg-color, inherit);
+  border-bottom: var(--bg-border, 0);
+}
+
+/* ==========================================================================
+   Section & Flow Spacing
+   ========================================================================== */
+
+/* Flow baseline tokens for main content */
+:root {
+  --main-content-flow-default: var(--spacing-96);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --main-content-flow-default: var(--spacing-64);
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --main-content-flow-default: calc(var(--spacing-96) * 1.5);
+  }
+}
+
+/* Default section spacing controlled through a custom property */
+section {
+  --section-padding-block: var(--spacing-64);
+  padding-block: var(--section-padding-block);
+}
+
+/* Section padding modifiers */
+.section-pad-none {
+  --section-padding-block: 0;
+}
+
+.section-pad-compact {
+  --section-padding-block: var(--spacing-32);
+}
+
+.section-pad-comfort {
+  --section-padding-block: var(--spacing-48);
+}
+
+.section-pad-loose {
+  --section-padding-block: var(--spacing-96);
+}
+
+.hero-section {
+  --section-padding-block: var(--spacing-96);
+}
+
+.compact-section {
+  --section-padding-block: var(--spacing-48);
+}
+
+.no-section-padding {
+  --section-padding-block: 0;
+}
+
+@media (max-width: 768px) {
+  section {
+    --section-padding-block: var(--spacing-48);
+  }
+
+  .section-pad-none-mobile {
+    --section-padding-block: 0 !important;
+  }
+
+  .section-pad-compact-mobile {
+    --section-padding-block: var(--spacing-24) !important;
+  }
+}
+
+/* Main content flow spacing (consumed by `.flow` utility) */
+.main-content {
+  --flow-space: var(--main-content-flow-default);
+  padding-bottom: var(--flow-space);
+}
+
+.main-content--flow-none {
+  --flow-space: 0;
+  padding-bottom: 0;
+}
+
+.main-content--flow-compact {
+  --flow-space: var(--spacing-48);
+}
+
+.main-content--flow-tight {
+  --flow-space: var(--spacing-32);
+}
+
+.main-content--flow-loose {
+  --flow-space: var(--spacing-96);
+}
+
+.main-content--flow-extended {
+  --flow-space: calc(var(--spacing-96) * 1.5);
+}
+
+@media (max-width: 768px) {
+  .main-content--flow-mobile-none {
+    --flow-space: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .main-content--flow-mobile-tight {
+    --flow-space: var(--spacing-32) !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .main-content--flow-extended {
+    --flow-space: calc(var(--spacing-96) * 1.5);
+  }
+}
+
+/* ==========================================================================
+   Debug Utilities (remove in production)
+   ========================================================================== */
+.debug-layout {
+  outline: 2px dashed rgba(255, 0, 0, 0.5);
+  outline-offset: -1px;
+}
+
+.debug-layout::before {
+  content: attr(class);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 0, 0, 0.8);
+  color: white;
+  font-size: 10px;
+  padding: 2px 4px;
+  z-index: 1000;
+}
+
+/* ==========================================================================
+   Accessibility & Performance
+   ========================================================================== */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .with-background::before {
+    transition: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .with-background::before {
+    border-color: ButtonText;
+  }
+}

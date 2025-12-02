@@ -1,0 +1,313 @@
+/* FILE: base/_reset.css */
+/* ==========================================================================
+   CSS Reset & Global Base Styles (БЕЗ типографики)
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   Root & Document Setup
+   ========================================================================== */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  /* Prevent iOS text size adjustment */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Better text rendering */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Disable smooth scrolling for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  /* Prevent horizontal scroll on mobile */
+  overflow-x: hidden;
+  /* Improve font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   Custom Scrollbar - Gallery Aesthetic
+   ========================================================================== */
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-text-muted);
+  border-radius: 0; /* Square corners for minimal aesthetic */
+  border: 2px solid var(--color-background); /* Creates inset effect */
+}
+
+@media (hover: hover) and (pointer: fine) {
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text);
+  }
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-text-muted) var(--color-background);
+}
+
+/* ==========================================================================
+   Media & Embedded Content
+   ========================================================================== */
+img, svg, video, canvas, audio, iframe, embed, object {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* SVG specific optimizations */
+svg {
+  fill: currentColor;
+  /* Prevent SVG from shrinking */
+  flex-shrink: 0;
+}
+
+/* Responsive iframes (for videos, maps, etc.) */
+iframe {
+  border: 0;
+}
+
+/* ==========================================================================
+   Interactive Elements
+   ========================================================================== */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-normal);
+  /* Mobile optimizations */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a:hover {
+    color: var(--color-accent-dark);
+    text-decoration: underline;
+  }
+}
+
+/* Allow text selection for content links */
+a:not([role="button"]) {
+  user-select: text;
+}
+
+/* Button-like links should not allow text selection */
+a[role="button"],
+a.btn {
+  user-select: none;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* ==========================================================================
+   Form Elements
+   ========================================================================== */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  background: transparent;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+/* Remove arrows from number inputs */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+fieldset {
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-20);
+  margin-bottom: var(--spacing-20);
+}
+
+legend {
+  padding: 0 var(--spacing-16);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Lists (БЕЗ стилизации - только reset)
+   ========================================================================== */
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Navigation lists */
+nav ul,
+nav ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: var(--spacing-16) var(--spacing-20);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+th {
+  font-weight: 600;
+  color: var(--color-text);
+  background-color: var(--color-background-alt);
+}
+
+/* ==========================================================================
+   Code Elements
+   ========================================================================== */
+code, kbd, samp, pre {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  font-size: 0.9em;
+}
+
+code {
+  background-color: var(--color-background-alt);
+  padding: 0.125em 0.25em;
+  border-radius: var(--border-radius-sm);
+  color: var(--color-accent);
+}
+
+pre {
+  background-color: var(--color-background-alt);
+  padding: var(--spacing-20);
+  border-radius: var(--border-radius);
+  overflow-x: auto;
+  line-height: var(--line-height-normal);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* ==========================================================================
+   Selection & Mark
+   ========================================================================== */
+::selection {
+  background-color: var(--color-accent-light);
+  color: var(--color-background);
+}
+
+mark {
+  background-color: var(--color-accent-light);
+  color: var(--color-text);
+  padding: 0.1em 0.2em;
+  border-radius: var(--border-radius-sm);
+}
+
+/* ==========================================================================
+   Horizontal Rule
+   ========================================================================== */
+hr {
+  border: none;
+  height: var(--border-width);
+  background-color: var(--color-border);
+  margin: var(--spacing-48) 0;
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+  
+  a, a:visited {
+    text-decoration: underline;
+  }
+  
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+  
+  img {
+    max-width: 100% !important;
+  }
+  
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+}

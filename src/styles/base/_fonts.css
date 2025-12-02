@@ -1,0 +1,97 @@
+/* FILE: src/styles/base/_fonts.css */
+/* ==========================================================================
+   Font Declarations - Art Portfolio (Erewhon body)
+   ========================================================================== */
+
+/* Publico Text — body font */
+@font-face {
+  font-family: "Publico Text";
+  src: url("/fonts/PublicoText-Roman-Trial.woff2") format("woff2"),
+    url("/fonts/PublicoText-Roman-Trial.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Publico Text";
+  src: url("/fonts/PublicoText-Roman-Trial.woff2") format("woff2"),
+    url("/fonts/PublicoText-Roman-Trial.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Publico Text";
+  src: url("/fonts/PublicoText-Roman-Trial.woff2") format("woff2"),
+    url("/fonts/PublicoText-Roman-Trial.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Publico Headline — heading font */
+@font-face {
+  font-family: "Publico Headline";
+  src: url("/fonts/PublicoHeadline-Roman-Trial.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Publico Headline Light";
+  src: url("/fonts/PublicoHeadline-Light-Cy-Web.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Publico Headline Light";
+  src: url("/fonts/PublicoHeadline-LightItalic-Cy-Web.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   Font Variables
+   ========================================================================== */
+:root {
+  --font-heading: "Publico Headline", Georgia, serif;
+  --font-body: "Publico Text", "Publico Headline", Georgia, serif;
+  --font-caption: var(--font-body);
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 500; /* currently maps to medium */
+
+  --font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  --font-optical-sizing: auto;
+}
+
+body {
+  font-feature-settings: var(--font-feature-settings);
+  font-optical-sizing: var(--font-optical-sizing);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-variant-ligatures: common-ligatures contextual;
+  font-kerning: normal;
+}
+
+*, *::before, *::after {
+  font-feature-settings: inherit;
+  font-optical-sizing: inherit;
+}
+@font-face {
+  font-family: "Publico Headline Light";
+  src: url("/fonts/PublicoHeadline-LightItalic-Cy-Web.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
