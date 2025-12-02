@@ -13,13 +13,6 @@
       :downloads="biographySection.downloads"
     />
 
-    <SeriesOverviewSection
-      container="wide"
-      sr-heading="Projects in focus"
-      :items="seriesItems"
-      style="--flow-space: var(--spacing-96)"
-    />
-
     <div class="layout-content" style="--flow-space: var(--spacing-96)">
       <h2>{{ statementBlock.heading }}</h2>
     </div>
@@ -37,7 +30,6 @@
 import { computed, onMounted } from 'vue'
 import AboutBiographySection from '@/components/about/AboutBiographySection.vue'
 import ArtistStatementSection from '@/components/about/ArtistStatementSection.vue'
-import SeriesOverviewSection from '@/components/shared/SeriesOverviewSection.vue'
 import { usePage } from '@/composables/useSanity'
 import { usePageContent } from '@/composables/useCMSData'
 import { useSEO } from '@/composables/useSEO'
@@ -77,42 +69,7 @@ const fallbackStatement = {
   ]
 }
 
-const fallbackSeries = [
-  {
-    title: 'Project placeholder',
-    description: 'Projects data will load from Sanity.',
-    startYear: 2024,
-    endYear: null,
-    medium: 'Mixed media',
-    dimensions: '',
-    image: placeholderImage,
-    alt: 'Placeholder project',
-    buttonLabel: 'View project',
-    to: { name: 'projects' },
-    catalogPdf: null
-  }
-]
-
 const contentSections = computed(() => usePageContent(page.value)?.value || [])
-
-const seriesItems = computed(() => {
-  const section = contentSections.value.find(item => item.type === 'series-overview')
-  if (!section?.series?.length) return fallbackSeries
-
-  return section.series.map(series => ({
-    title: series.title,
-    description: series.description,
-    startYear: series.startYear,
-    endYear: series.endYear,
-    medium: series.metadata?.find(meta => meta.label === 'medium')?.value || series.medium,
-    dimensions: series.metadata?.find(meta => meta.label === 'dimensions')?.value || series.dimensions,
-    image: series.coverImage || placeholderImage,
-    alt: series.title,
-    buttonLabel: 'View project',
-    catalogPdf: series.catalogPdf,
-    to: series.slug ? { name: 'projects', params: { slug: series.slug } } : { name: 'projects' }
-  }))
-})
 
 const biographySection = computed(() => {
   const essay = contentSections.value.find(item => item.type === 'essay')
@@ -124,23 +81,7 @@ const biographySection = computed(() => {
     imageSrc: fallbackBiography.imageSrc,
     imageAlt: fallbackBiography.imageAlt,
     imageCaption: fallbackBiography.imageCaption,
-    downloads: (() => {
-      const seriesCatalogs = seriesItems.value
-        .filter(item => item.catalogPdf?.url)
-        .map(item => ({
-          label: `${item.title} catalog`,
-          meta: 'PDF',
-          href: item.catalogPdf.url
-        }))
-
-      const downloads = [...seriesCatalogs, ...fallbackBiography.downloads]
-      const uniqueLabels = new Set()
-      return downloads.filter(item => {
-        if (uniqueLabels.has(item.label)) return false
-        uniqueLabels.add(item.label)
-        return true
-      })
-    })()
+    downloads: fallbackBiography.downloads
   }
 })
 
