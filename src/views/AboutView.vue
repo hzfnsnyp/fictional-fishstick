@@ -14,7 +14,7 @@
     />
 
     <FeaturedPressList
-      container="wide"
+      container="content"
       :items="featuredPress"
       style="--flow-space: var(--spacing-96)"
     />

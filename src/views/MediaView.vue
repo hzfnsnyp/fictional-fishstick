@@ -10,9 +10,9 @@
       </p>
     </section>
 
-    <FeaturedMagazinesList container="wide" :items="featuredMagazines" style="--flow-space: var(--spacing-64)" />
-    <FeaturedPressList container="wide" :items="featuredPress" style="--flow-space: var(--spacing-64)" />
-    <FeaturedRadioList container="wide" :items="featuredRadio" style="--flow-space: var(--spacing-64)" />
+    <FeaturedMagazinesList container="content" :items="featuredMagazines" style="--flow-space: var(--spacing-64)" />
+    <FeaturedPressList container="content" :items="featuredPress" style="--flow-space: var(--spacing-64)" />
+    <FeaturedRadioList container="content" :items="featuredRadio" style="--flow-space: var(--spacing-64)" />
 
     <div class="layout-content" style="--flow-space: var(--spacing-96)">
       <h2 class="section-title">Magazines</h2>

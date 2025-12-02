@@ -70,7 +70,7 @@ export default {
 
 .featured-list__row {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 0.6fr) minmax(0, 1fr);
   gap: var(--spacing-16);
   align-items: start;
 }
