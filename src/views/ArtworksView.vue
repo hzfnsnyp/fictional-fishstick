@@ -211,11 +211,6 @@ const onArtworkClick = (artwork) => {
 </script>
 
 <style scoped>
-/* Override main-content padding for this page */
-.main-content {
-  padding-top: var(--spacing-16) !important;
-}
-
 .layout-main--filters {
   margin-bottom: 0;
 }
