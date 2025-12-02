@@ -13,6 +13,12 @@
       :downloads="biographySection.downloads"
     />
 
+    <FeaturedPressList
+      container="wide"
+      :items="featuredPress"
+      style="--flow-space: var(--spacing-96)"
+    />
+
     <div class="layout-content" style="--flow-space: var(--spacing-96)">
       <h2>{{ statementBlock.heading }}</h2>
     </div>
@@ -30,6 +36,7 @@
 import { computed, onMounted } from 'vue'
 import AboutBiographySection from '@/components/about/AboutBiographySection.vue'
 import ArtistStatementSection from '@/components/about/ArtistStatementSection.vue'
+import FeaturedPressList from '@/components/shared/FeaturedPressList.vue'
 import { usePage } from '@/composables/useSanity'
 import { usePageContent } from '@/composables/useCMSData'
 import { useSEO } from '@/composables/useSEO'
@@ -70,6 +77,10 @@ const fallbackStatement = {
 }
 
 const contentSections = computed(() => usePageContent(page.value)?.value || [])
+
+const featuredPress = [
+  { title: 'Vesti.kg', type: 'Press release', date: 'April 21, 2025', headline: '40 Roses by Leah Sanata: Painting Where Light Becomes the Language of Eternity' }
+]
 
 const biographySection = computed(() => {
   const essay = contentSections.value.find(item => item.type === 'essay')

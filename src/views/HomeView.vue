@@ -33,6 +33,24 @@
       </template>
     </NarrativeSection>
 
+    <section class="layout-content home-downloads" style="--flow-space: var(--spacing-96)">
+      <h3 class="home-downloads__title">Downloads</h3>
+      <ul class="home-downloads__list">
+        <li v-for="(item, index) in downloads" :key="index">
+          <ButtonComponent
+            variant="itinerary"
+            size="medium"
+            tag="a"
+            :href="item.href || '#'"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ item.label }} <span v-if="item.meta">({{ item.meta }})</span>
+          </ButtonComponent>
+        </li>
+      </ul>
+    </section>
+
     <PracticeHighlightsSection
       style="--flow-space: var(--spacing-96)"
       :image-src="practiceBlock.imageSrc"
@@ -236,6 +254,14 @@ const artworkSlides = computed(() => {
   }))
 })
 
+const downloads = [
+  { label: 'Catalog — Gradualism series', meta: 'PDF', href: '' },
+  { label: 'Catalog — Chromatic Gardens series', meta: 'PDF', href: '' },
+  { label: 'Selected exhibitions', meta: 'PDF', href: '' },
+  { label: 'Curriculum vitae', meta: 'PDF', href: '' },
+  { label: 'Selected artworks catalog', meta: 'PDF', href: '' }
+]
+
 const goToArtworks = () => {
   router.push({ name: 'artworks' })
 }
@@ -301,6 +327,35 @@ onMounted(async () => {
   }
 }
 
+.home-downloads {
+  display: grid;
+  gap: var(--spacing-24);
+}
+
+.home-downloads__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-24);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+}
+
+.home-downloads__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  align-items: flex-start;
+}
+
+.home-downloads__list li {
+  margin: 0;
+  padding: 0;
+}
+
 @media (max-width: 768px) {
   .section-title {
     font-size: var(--font-size-48);
@@ -308,6 +363,10 @@ onMounted(async () => {
 
   .home-artworks {
     padding-block: var(--spacing-40);
+  }
+
+  .home-downloads__title {
+    font-size: var(--font-size-20);
   }
 }
 </style>

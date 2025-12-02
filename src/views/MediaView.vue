@@ -15,12 +15,6 @@
     <FeaturedRadioList container="wide" :items="featuredRadio" style="--flow-space: var(--spacing-64)" />
 
     <div class="layout-content" style="--flow-space: var(--spacing-96)">
-      <h2 class="section-title">Exhibitions</h2>
-      <p class="section-intro">Recent and past shows.</p>
-    </div>
-    <ExhibitionsArchive :exhibitions="exhibitionsArchive" style="--flow-space: var(--spacing-32)" />
-
-    <div class="layout-content" style="--flow-space: var(--spacing-96)">
       <h2 class="section-title">Magazines</h2>
     </div>
     <MagazinesArchive :items="magazinesArchive" style="--flow-space: var(--spacing-32)" />
@@ -39,7 +33,6 @@
 
 <script setup>
 import { computed, onMounted } from 'vue'
-import ExhibitionsArchive from '@/components/archive/ExhibitionsArchive.vue'
 import MagazinesArchive from '@/components/archive/MagazinesArchive.vue'
 import PressArchive from '@/components/archive/PressArchive.vue'
 import RadioArchive from '@/components/archive/RadioArchive.vue'
@@ -47,12 +40,10 @@ import FeaturedMagazinesList from '@/components/shared/FeaturedMagazinesList.vue
 import FeaturedPressList from '@/components/shared/FeaturedPressList.vue'
 import FeaturedRadioList from '@/components/shared/FeaturedRadioList.vue'
 import { usePage } from '@/composables/useSanity'
-import { useExhibitions } from '@/composables/useExhibitions'
-import { usePageContent, useExhibitionData } from '@/composables/useCMSData'
+import { usePageContent } from '@/composables/useCMSData'
 import { useSEO } from '@/composables/useSEO'
 
 const { page, fetchPage } = usePage('media')
-const { exhibitions, fetchExhibitions } = useExhibitions()
 const { setSEO } = useSEO()
 
 const contentSections = computed(() => usePageContent(page.value)?.value || [])
@@ -83,10 +74,6 @@ const fallbackMedia = {
   ]
 }
 
-const fallbackExhibitions = [
-  { id: 1, label: '2024', title: 'Exhibition placeholder', meta: 'Add exhibitions in Sanity', url: '' }
-]
-
 const mediaByCategory = (category) =>
   contentSections.value
     .filter(item => item.type === 'media-archive' && item.category === category)
@@ -107,24 +94,8 @@ const radioArchive = computed(() => {
   return items.length ? items : fallbackMedia.radio
 })
 
-const exhibitionsArchive = computed(() => {
-  if (exhibitions.value?.length) {
-    return exhibitions.value.map((exhibition) => {
-      const data = useExhibitionData(exhibition).value
-      return {
-        id: data.id,
-        label: data.year?.toString() || '',
-        title: data.title,
-        meta: [data.venue, data.location, data.type].filter(Boolean).join(', '),
-        url: data.url
-      }
-    })
-  }
-  return fallbackExhibitions
-})
-
 onMounted(async () => {
-  await Promise.all([fetchPage('media'), fetchExhibitions()])
+  await fetchPage('media')
 
   const seo = page.value?.seo
   if (seo) {
