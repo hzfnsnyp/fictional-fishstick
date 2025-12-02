@@ -1,8 +1,11 @@
 <template>
   <main class="main-content flow main-content--flow-none privacy-page">
-    <section class="layout-main privacy-intro">
+    <div class="layout-content">
+      <h1 class="page-title">Privacy Policy</h1>
+    </div>
+
+    <section class="layout-main privacy-intro" style="--flow-space: var(--spacing-48)">
       <div class="layout-narrow privacy-intro__inner">
-        <h1 class="privacy-title">Privacy Policy</h1>
         <p class="privacy-lede">
           This draft outlines how Leah Sanata Studio ("the Studio") captures, stores, and uses personal information
           collected through our website, newsletters, and in-person programming. The final legal text will follow this
@@ -248,13 +251,6 @@ export default {
 .privacy-intro__inner {
   display: grid;
   gap: var(--spacing-32);
-}
-
-.privacy-title {
-  margin: 0;
-  font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 4.5vw, var(--font-size-46));
-  font-weight: var(--font-weight-light);
 }
 
 .privacy-lede {

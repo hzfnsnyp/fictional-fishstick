@@ -1,8 +1,11 @@
 <template>
   <main class="main-content flow main-content--flow-compact main-content--flow-mobile-tight terms-page">
-    <section class="layout-main">
+    <div class="layout-content">
+      <h1 class="page-title">Terms of Use</h1>
+    </div>
+
+    <section class="layout-main" style="--flow-space: var(--spacing-48)">
       <div class="layout-narrow page-intro">
-        <h1>Terms of Use</h1>
         <p class="page-intro__lede">
           The following outline previews the structure of the future Terms of Use for Leah Sanata Studio. It clarifies expectations for visiting, commissioning or purchasing through the site while we finalise the legal text with counsel.
         </p>
