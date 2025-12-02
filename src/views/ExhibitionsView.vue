@@ -1,6 +1,8 @@
 <template>
   <main class="main-content flow">
-    <h1 class="page-title">Exhibitions</h1>
+    <div class="layout-content">
+      <h1 class="page-title">Exhibitions</h1>
+    </div>
     <ExhibitionsArchive :exhibitions="exhibitionsArchive" style="--flow-space: var(--spacing-48)" />
   </main>
 </template>

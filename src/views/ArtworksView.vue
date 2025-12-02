@@ -1,6 +1,8 @@
 <template>
   <main class="main-content flow">
-    <h1 class="page-title">Artworks</h1>
+    <div class="layout-content">
+      <h1 class="page-title">Artworks</h1>
+    </div>
 
     <section class="layout-main layout-main--filters" style="--flow-space: var(--spacing-48)">
       <ArtworkFilterPanel
