@@ -27,7 +27,7 @@
       style="--flow-space: var(--spacing-32)"
     >
       <template #cta>
-        <ButtonComponent variant="itinerary" @click="goToAbout">
+        <ButtonComponent variant="secondary" size="large" @click="goToAbout">
           Full Biography
         </ButtonComponent>
       </template>
@@ -57,7 +57,8 @@
         <ArtworkCarousel :slides="artworkSlides" />
         <div class="home-artworks__cta">
           <ButtonComponent
-            variant="itinerary"
+            variant="primary"
+            size="medium"
             @click="goToArtworks"
           >
             View all artworks
