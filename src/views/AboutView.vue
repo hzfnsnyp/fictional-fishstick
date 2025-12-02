@@ -1,6 +1,6 @@
 <template>
   <main class="main-content flow about-page">
-    <div class="layout-content">
+    <div class="layout-main">
       <h1 class="page-title">{{ biographySection.heading }}</h1>
     </div>
 

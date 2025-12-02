@@ -1,6 +1,6 @@
 <template>
   <main class="main-content flow">
-    <div class="layout-content">
+    <div class="layout-main">
       <h1 class="page-title">Artworks</h1>
     </div>
 
