@@ -1,7 +1,5 @@
 <template>
   <div class="artwork-filter">
-    <h1 class="heading-primary">Artworks</h1>
-
     <!-- Top controls: results on left, Filters button + sort dropdown on right -->
     <div class="sorting-controls">
       <div

@@ -1,9 +1,11 @@
 <template>
   <main class="main-content flow about-page">
+    <div class="layout-content">
+      <h1 class="page-title">{{ biographySection.heading }}</h1>
+    </div>
+
     <AboutBiographySection
       style="--flow-space: var(--spacing-96)"
-      :heading="biographySection.heading"
-      :eyebrow="biographySection.eyebrow"
       :paragraphs="biographySection.paragraphs"
       :image-src="biographySection.imageSrc"
       :image-alt="biographySection.imageAlt"
@@ -18,11 +20,14 @@
       style="--flow-space: var(--spacing-96)"
     />
 
+    <div class="layout-content" style="--flow-space: var(--spacing-96)">
+      <h2>{{ statementBlock.heading }}</h2>
+    </div>
+
     <ArtistStatementSection
       container="content"
-      :heading="statementBlock.heading"
       :paragraphs="statementBlock.paragraphs"
-      style="--flow-space: var(--spacing-96)"
+      style="--flow-space: var(--spacing-32)"
     />
 
   </main>

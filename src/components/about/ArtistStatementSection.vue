@@ -1,10 +1,5 @@
 <template>
   <section class="layout-content artist-statement">
-    <!-- Section Header -->
-    <header class="artist-statement__header">
-      <h2 class="artist-statement__title">{{ heading }}</h2>
-    </header>
-
     <!-- Content -->
     <div class="artist-statement__content">
       <p
@@ -22,10 +17,6 @@
 export default {
   name: 'ArtistStatementSection',
   props: {
-    heading: {
-      type: String,
-      default: 'Artist Statement'
-    },
     paragraphs: {
       type: Array,
       default: () => [
@@ -45,21 +36,6 @@ export default {
 .artist-statement {
   padding-top: var(--spacing-96); /* 96px */
   padding-bottom: var(--spacing-96); /* 96px */
-}
-
-/* ==========================================================================
-   SECTION HEADER
-   ========================================================================== */
-.artist-statement__header {
-  margin-bottom: var(--spacing-48); /* 48px - меньше отступ */
-}
-
-.artist-statement__title {
-  font-family: var(--font-heading); /* Publico Headline Light */
-  font-size: var(--font-size-38); /* 36px desktop - меньше как в оригинале */
-  font-weight: var(--font-weight-light); /* 300 */
-  line-height: var(--line-height-tight);
-  margin: 0;
 }
 
 /* ==========================================================================
@@ -108,10 +84,6 @@ export default {
   }
 
   .artist-statement__container {}
-
-  .artist-statement__header {
-    margin-bottom: var(--spacing-48); /* 48px */
-  }
 
   .artist-statement__content {
     gap: var(--spacing-20); /* 24px между параграфами */

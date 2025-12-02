@@ -14,10 +14,26 @@
     <FeaturedPressList container="wide" :items="featuredPress" style="--flow-space: var(--spacing-64)" />
     <FeaturedRadioList container="wide" :items="featuredRadio" style="--flow-space: var(--spacing-64)" />
 
-    <ExhibitionsArchive :exhibitions="exhibitionsArchive" style="--flow-space: var(--spacing-96)" />
-    <MagazinesArchive :items="magazinesArchive" style="--flow-space: var(--spacing-96)" />
-    <PressArchive :items="pressArchive" style="--flow-space: var(--spacing-96)" />
-    <RadioArchive :items="radioArchive" style="--flow-space: var(--spacing-96)" />
+    <div class="layout-content" style="--flow-space: var(--spacing-96)">
+      <h2 class="section-title">Exhibitions</h2>
+      <p class="section-intro">Recent and past shows.</p>
+    </div>
+    <ExhibitionsArchive :exhibitions="exhibitionsArchive" style="--flow-space: var(--spacing-32)" />
+
+    <div class="layout-content" style="--flow-space: var(--spacing-96)">
+      <h2 class="section-title">Magazines</h2>
+    </div>
+    <MagazinesArchive :items="magazinesArchive" style="--flow-space: var(--spacing-32)" />
+
+    <div class="layout-content" style="--flow-space: var(--spacing-96)">
+      <h2 class="section-title">Press</h2>
+    </div>
+    <PressArchive :items="pressArchive" style="--flow-space: var(--spacing-32)" />
+
+    <div class="layout-content" style="--flow-space: var(--spacing-96)">
+      <h2 class="section-title">Radio</h2>
+    </div>
+    <RadioArchive :items="radioArchive" style="--flow-space: var(--spacing-32)" />
   </main>
 </template>
 
@@ -143,12 +159,36 @@ onMounted(async () => {
   font-size: var(--font-size-18);
 }
 
+.section-title {
+  margin: 0 0 var(--spacing-12) 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-38);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+}
+
+.section-intro {
+  margin: 0;
+  font-size: var(--font-size-18);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+}
+
 @media (max-width: 768px) {
   .media-page {
     padding-bottom: var(--spacing-64);
   }
 
   .media-lede {
+    font-size: var(--font-size-16);
+  }
+
+  .section-title {
+    font-size: var(--font-size-32);
+  }
+
+  .section-intro {
     font-size: var(--font-size-16);
   }
 }

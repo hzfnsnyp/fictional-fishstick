@@ -2,14 +2,13 @@
   <section
     class="hero-section with-background"
     :style="{ '--bg-color': 'var(--color-surface-primary)' }"
-    aria-labelledby="hero-title"
   >
     <div :class="[containerClass, 'hero-wrap']">
-      <header class="hero-copy">
-        <h2 id="hero-title" class="hero-text">
+      <div class="hero-copy">
+        <p class="hero-text">
           {{ title }}
-        </h2>
-      </header>
+        </p>
+      </div>
       <figure class="hero-figure">
         <img
           class="hero-image"

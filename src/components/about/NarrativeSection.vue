@@ -1,10 +1,7 @@
 <template>
-  <section class="layout-content about-story" aria-labelledby="about-story-title">
+  <section class="layout-content about-story">
     <div class="about-story__intro">
-      <div class="about-story__heading">
-        <p v-if="subheading" class="about-story__eyebrow">{{ subheading }}</p>
-        <h1 id="about-story-title" class="about-story__title">{{ heading }}</h1>
-      </div>
+      <p v-if="subheading" class="about-story__eyebrow">{{ subheading }}</p>
       <blockquote v-if="quote" class="about-story__quote">
         <p>{{ quote }}</p>
         <cite v-if="quoteAuthor" class="about-story__quote-author">{{ quoteAuthor }}</cite>
@@ -44,10 +41,6 @@
 export default {
   name: 'NarrativeSection',
   props: {
-    heading: {
-      type: String,
-      default: 'About'
-    },
     subheading: {
       type: String,
       default: ''
@@ -92,18 +85,6 @@ export default {
 .about-story__intro {
   display: grid;
   gap: var(--spacing-24);
-}
-
-.about-story__title {
-  margin: 0;
-  font-family: var(--font-heading);
-  font-size: var(--font-size-64);
-  font-weight: var(--font-weight-light);
-}
-
-.about-story__heading {
-  display: grid;
-  gap: var(--spacing-8);
 }
 
 .about-story__eyebrow {
@@ -201,10 +182,6 @@ export default {
     padding-block-start: var(--spacing-64);
     padding-block-end: var(--spacing-64);
     gap: var(--spacing-48);
-  }
-
-  .about-story__title {
-    font-size: var(--font-size-48);
   }
 
   .about-story__quote,

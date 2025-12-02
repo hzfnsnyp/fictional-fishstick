@@ -1,9 +1,5 @@
 <template>
   <section class="archive-section layout-main radio-archive">
-    <header class="archive-section__header">
-      <h1>Radio</h1>
-    </header>
-
     <div v-for="(group, year) in groupedItems" :key="year" class="archive-group">
       <ArchiveRow
         v-for="(item, index) in group"
@@ -50,24 +46,5 @@ export default {
 .archive-section {
   margin-block: var(--spacing-64);
   font-family: var(--font-body);
-}
-
-.archive-section__header {
-  margin-bottom: var(--spacing-48);
-}
-
-.archive-section__header h1 {
-  margin: 0;
-  font-family: var(--font-heading);
-  font-size: var(--font-size-38);
-  font-weight: var(--font-weight-light);
-  line-height: var(--line-height-tight);
-  color: var(--color-text-primary);
-}
-
-@media (max-width: 768px) {
-  .archive-section__header h1 {
-    font-size: var(--font-size-32);
-  }
 }
 </style>

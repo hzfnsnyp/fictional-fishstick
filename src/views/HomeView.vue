@@ -14,14 +14,17 @@
       style="--flow-space: 0"
     />
 
+    <div class="layout-content" style="--flow-space: var(--spacing-96)">
+      <h2 class="section-title">{{ practicePhasesBlock.heading }}</h2>
+    </div>
+
     <NarrativeSection
-      :heading="practicePhasesBlock.heading"
       :subheading="practicePhasesBlock.subheading"
       :quote="practicePhasesBlock.quote"
       :quote-author="practicePhasesBlock.quoteAuthor"
       :body="practicePhasesBlock.body"
       :phases="practicePhasesBlock.timeline"
-      style="--flow-space: var(--spacing-96)"
+      style="--flow-space: var(--spacing-32)"
     >
       <template #cta>
         <ButtonComponent variant="itinerary" @click="goToAbout">
@@ -260,6 +263,15 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.section-title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-64);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+}
+
 .home-artworks {
   background: var(--color-surface-primary);
   padding-block: var(--spacing-64);
@@ -289,6 +301,10 @@ onMounted(async () => {
 }
 
 @media (max-width: 768px) {
+  .section-title {
+    font-size: var(--font-size-48);
+  }
+
   .home-artworks {
     padding-block: var(--spacing-40);
   }

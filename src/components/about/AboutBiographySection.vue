@@ -1,12 +1,7 @@
 <template>
-  <section class="about-bio layout-wide" aria-labelledby="about-bio-title">
+  <section class="about-bio layout-wide">
     <div class="about-bio__grid">
       <div class="about-bio__main">
-        <header class="about-bio__header">
-          <p v-if="eyebrow" class="about-bio__eyebrow">{{ eyebrow }}</p>
-          <h1 id="about-bio-title" class="about-bio__title page-title">{{ heading }}</h1>
-        </header>
-
         <div class="about-bio__body">
           <p
             v-for="(paragraph, index) in paragraphs"
@@ -45,14 +40,6 @@ export default {
   name: 'AboutBiographySection',
   components: { ClickableTextComponent },
   props: {
-    heading: {
-      type: String,
-      default: 'About'
-    },
-    eyebrow: {
-      type: String,
-      default: ''
-    },
     paragraphs: {
       type: Array,
       default: () => []
@@ -93,27 +80,6 @@ export default {
   grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
   gap: var(--spacing-64);
   align-items: start;
-}
-
-.about-bio__header {
-  display: grid;
-  gap: var(--spacing-12);
-  margin-bottom: var(--spacing-16);
-}
-
-.about-bio__eyebrow {
-  margin: 0;
-  letter-spacing: 0.06em;
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-16);
-}
-
-.about-bio__title {
-  margin: 0;
-  font-family: var(--font-heading);
-  font-weight: var(--font-weight-light);
-  font-size: var(--font-size-48);
-  line-height: var(--line-height-heading);
 }
 
 .about-bio__body {
