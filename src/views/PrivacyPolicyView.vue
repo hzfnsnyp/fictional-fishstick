@@ -253,6 +253,18 @@ export default {
   gap: var(--spacing-24);
 }
 
+/* Reset all typography margins in intro section */
+.privacy-intro__inner h1,
+.privacy-intro__inner h2,
+.privacy-intro__inner h3,
+.privacy-intro__inner p,
+.privacy-intro__inner ul,
+.privacy-intro__inner ol,
+.privacy-intro__inner li {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .privacy-lede {
   margin: 0;
 }
