@@ -56,6 +56,13 @@
           >
             View all artworks
           </ButtonComponent>
+          <ButtonComponent
+            variant="secondary"
+            size="medium"
+            @click="goToProjects"
+          >
+            Download project catalog (PDF)
+          </ButtonComponent>
         </div>
       </div>
     </section>
@@ -234,6 +241,10 @@ const goToAbout = () => {
   router.push({ name: 'about' })
 }
 
+const goToProjects = () => {
+  router.push({ name: 'projects' })
+}
+
 onMounted(async () => {
   await fetchPage('home')
 
@@ -279,6 +290,8 @@ onMounted(async () => {
 .home-artworks__cta {
   display: flex;
   justify-content: center;
+  gap: var(--spacing-16);
+  flex-wrap: wrap;
 }
 
 @media (max-width: 1024px) {

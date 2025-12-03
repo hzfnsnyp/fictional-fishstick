@@ -180,7 +180,7 @@ export default {
 
 .about-bio__download-link {
   color: var(--color-text-primary);
-  text-decoration: underline;
+  text-decoration: none;
   font-size: var(--font-size-18);
   display: inline-flex;
   gap: var(--spacing-4);
