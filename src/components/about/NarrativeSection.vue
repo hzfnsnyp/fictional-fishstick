@@ -67,10 +67,7 @@ export default {
     },
     phases: {
       type: Array,
-      default: () => [
-        { title: 'Formation', period: '2019–2021', description: 'Independent research, color studies, early gradients.' },
-        { title: 'Gradualism', period: '2022–present', description: 'Layered chroma systems, exhibitions abroad, catalogues released.' }
-      ]
+      default: () => []
     }
   }
 }

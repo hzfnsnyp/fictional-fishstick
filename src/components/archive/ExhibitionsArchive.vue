@@ -1,5 +1,5 @@
 <template>
-  <section class="archive-section layout-main exhibitions-archive">
+  <section class="archive-section layout-content exhibitions-archive">
     <header class="archive-section__header">
       <h1>Exhibitions</h1>
       <p class="archive-section__intro">Recent and past shows.</p>
