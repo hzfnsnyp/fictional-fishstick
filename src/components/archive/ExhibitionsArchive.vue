@@ -1,5 +1,5 @@
 <template>
-  <section class="archive-section layout-main exhibitions-archive">
+  <section :class="[containerClass, 'archive-section exhibitions-archive']">
     <div v-for="(group, year) in groupedExhibitions" :key="year" class="archive-group">
       <ArchiveRow
         v-for="(item, index) in group"
@@ -16,17 +16,25 @@
 
 <script>
 import ArchiveRow from './ArchiveRow.vue'
+import { mapContainer } from '@/utils/containerClass'
 
 export default {
   name: 'ExhibitionsArchive',
   components: { ArchiveRow },
   props: {
+    container: {
+      type: String,
+      default: 'content'
+    },
     exhibitions: {
       type: Array,
       default: () => []
     }
   },
   computed: {
+    containerClass() {
+      return mapContainer(this.container)
+    },
     groupedExhibitions() {
       const grouped = {}
       this.exhibitions.forEach(item => {

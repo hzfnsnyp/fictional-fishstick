@@ -23,7 +23,7 @@
       :quote="practicePhasesBlock.quote"
       :quote-author="practicePhasesBlock.quoteAuthor"
       :body="practicePhasesBlock.body"
-      :phases="practicePhasesBlock.timeline"
+      :phases="[]"
       style="--flow-space: var(--spacing-32)"
     >
       <template #cta>
@@ -81,6 +81,16 @@
           >
             View all artworks
           </ButtonComponent>
+          <ButtonComponent
+            variant="secondary"
+            size="medium"
+            tag="a"
+            href=""
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download Project Catalog (PDF)
+          </ButtonComponent>
         </div>
       </div>
     </section>
@@ -131,13 +141,9 @@ const fallbackSections = {
     quoteAuthor: 'Leah Sanata',
     body: [
       'Leah Sanata belongs to a generation of artists who see geography not as a boundary, but as creative fuel. Working from Dubai — a city at the intersection of cultures — she turns mathematical clarity into saturated emotion.',
-      'Rejecting formal art school, she built her own methodology through experimentation. By 2021 this became “gradualism” — a meditative, stepwise layering process.',
+      'Rejecting formal art school, she built her own methodology through experimentation. By 2021 this became "gradualism" — a meditative, stepwise layering process.',
       'Solo shows across Central Asia and Europe, plus features in Artist Talk Magazine (UK) and Visual Art Journal (NL), mark the current chapter.',
       'Each series is treated as a laboratory where structure and intuition negotiate the final surface.'
-    ],
-    timeline: [
-      { title: 'Formation', period: '2019–2021', description: 'Independent research, color studies, early gradients.' },
-      { title: 'Gradualism', period: '2022–present', description: 'Layered chroma systems, exhibitions abroad, catalogues released.' }
     ]
   },
   practice: {
@@ -205,8 +211,7 @@ const practicePhasesBlock = computed(() => {
     subheading: section.subheading || '',
     quote: section.quote || fallbackSections.practicePhases.quote,
     quoteAuthor: section.quoteAuthor || fallbackSections.practicePhases.quoteAuthor,
-    body: section.body?.length ? section.body : fallbackSections.practicePhases.body,
-    timeline: section.timeline?.length ? section.timeline : fallbackSections.practicePhases.timeline
+    body: section.body?.length ? section.body : fallbackSections.practicePhases.body
   }
 })
 
@@ -318,6 +323,8 @@ onMounted(async () => {
 .home-artworks__cta {
   display: flex;
   justify-content: center;
+  gap: var(--spacing-16);
+  flex-wrap: wrap;
 }
 
 @media (max-width: 1024px) {

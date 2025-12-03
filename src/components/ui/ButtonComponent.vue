@@ -232,7 +232,6 @@ export default defineComponent({
   font-size: var(--font-size-18);
   line-height: var(--line-height-normal);
   font-weight: var(--font-weight-regular);
-  font-style: italic;
 }
 
 @media (hover: hover) and (pointer: fine) {

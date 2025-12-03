@@ -13,40 +13,19 @@
     <FeaturedMagazinesList container="content" :items="featuredMagazines" style="--flow-space: var(--spacing-64)" />
     <FeaturedPressList container="content" :items="featuredPress" style="--flow-space: var(--spacing-64)" />
     <FeaturedRadioList container="content" :items="featuredRadio" style="--flow-space: var(--spacing-64)" />
-
-    <div class="layout-content" style="--flow-space: var(--spacing-96)">
-      <h2 class="section-title">Magazines</h2>
-    </div>
-    <MagazinesArchive :items="magazinesArchive" style="--flow-space: var(--spacing-32)" />
-
-    <div class="layout-content" style="--flow-space: var(--spacing-96)">
-      <h2 class="section-title">Press</h2>
-    </div>
-    <PressArchive :items="pressArchive" style="--flow-space: var(--spacing-32)" />
-
-    <div class="layout-content" style="--flow-space: var(--spacing-96)">
-      <h2 class="section-title">Radio</h2>
-    </div>
-    <RadioArchive :items="radioArchive" style="--flow-space: var(--spacing-32)" />
   </main>
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
-import MagazinesArchive from '@/components/archive/MagazinesArchive.vue'
-import PressArchive from '@/components/archive/PressArchive.vue'
-import RadioArchive from '@/components/archive/RadioArchive.vue'
+import { onMounted } from 'vue'
 import FeaturedMagazinesList from '@/components/shared/FeaturedMagazinesList.vue'
 import FeaturedPressList from '@/components/shared/FeaturedPressList.vue'
 import FeaturedRadioList from '@/components/shared/FeaturedRadioList.vue'
 import { usePage } from '@/composables/useSanity'
-import { usePageContent } from '@/composables/useCMSData'
 import { useSEO } from '@/composables/useSEO'
 
 const { page, fetchPage } = usePage('media')
 const { setSEO } = useSEO()
-
-const contentSections = computed(() => usePageContent(page.value)?.value || [])
 
 const featuredMagazines = [
   { title: 'Artist Talk Magazine', location: 'London, United Kingdom', date: 'October 2024' },
@@ -61,38 +40,6 @@ const featuredPress = [
 const featuredRadio = [
   { title: 'StoryTime', type: 'Radio Interview', date: 'February 26, 2024', headline: 'StoryTime: Radio Interview with Licia Massella' }
 ]
-
-const fallbackMedia = {
-  magazines: [
-    { id: 1, label: '2024', title: 'Magazine feature placeholder', meta: 'Add CMS media entries', href: '' }
-  ],
-  press: [
-    { id: 2, label: '2024', title: 'Press mention placeholder', meta: 'Press archive sample', href: '' }
-  ],
-  radio: [
-    { id: 3, label: '2024', title: 'Radio/Podcast placeholder', meta: 'Add link in CMS', href: '' }
-  ]
-}
-
-const mediaByCategory = (category) =>
-  contentSections.value
-    .filter(item => item.type === 'media-archive' && item.category === category)
-    .flatMap(item => item.items || [])
-
-const magazinesArchive = computed(() => {
-  const items = mediaByCategory('magazine')
-  return items.length ? items : fallbackMedia.magazines
-})
-
-const pressArchive = computed(() => {
-  const items = mediaByCategory('press')
-  return items.length ? items : fallbackMedia.press
-})
-
-const radioArchive = computed(() => {
-  const items = mediaByCategory('radio')
-  return items.length ? items : fallbackMedia.radio
-})
 
 onMounted(async () => {
   await fetchPage('media')

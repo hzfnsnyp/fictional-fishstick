@@ -3,7 +3,7 @@
     <div class="layout-content">
       <h1 class="page-title">Exhibitions</h1>
     </div>
-    <ExhibitionsArchive :exhibitions="exhibitionsArchive" style="--flow-space: var(--spacing-48)" />
+    <ExhibitionsArchive container="content" :exhibitions="exhibitionsArchive" style="--flow-space: var(--spacing-48)" />
   </main>
 </template>
 
