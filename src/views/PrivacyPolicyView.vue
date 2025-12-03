@@ -320,11 +320,11 @@ export default {
 
 .privacy-article {
   display: grid;
-  gap: var(--spacing-24);
+  gap: 0;
 }
 
 .privacy-article__title {
-  margin: 0;
+  margin: 0 0 var(--spacing-16) 0;
   font-family: var(--font-heading);
   font-size: var(--font-size-32);
   font-weight: var(--font-weight-light);
@@ -332,17 +332,13 @@ export default {
 }
 
 .privacy-article__lead {
-  margin: 0;
+  margin: 0 0 var(--spacing-24) 0;
 }
 
 .privacy-subsection {
   display: grid;
   gap: var(--spacing-12);
-  margin: 0;
-}
-
-.privacy-subsection + .privacy-subsection {
-  margin-top: var(--spacing-32);
+  margin: 0 0 var(--spacing-24) 0;
 }
 
 .privacy-subsection__title {
@@ -394,12 +390,16 @@ export default {
     gap: var(--spacing-32);
   }
 
-  .privacy-article {
-    gap: var(--spacing-20);
+  .privacy-article__title {
+    margin-bottom: var(--spacing-12);
   }
 
-  .privacy-subsection + .privacy-subsection {
-    margin-top: var(--spacing-24);
+  .privacy-article__lead {
+    margin-bottom: var(--spacing-20);
+  }
+
+  .privacy-subsection {
+    margin-bottom: var(--spacing-20);
   }
 }
 </style>
