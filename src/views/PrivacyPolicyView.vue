@@ -320,7 +320,7 @@ export default {
 
 .privacy-article {
   display: grid;
-  gap: var(--spacing-16);
+  gap: var(--spacing-24);
 }
 
 .privacy-article__title {
@@ -328,7 +328,7 @@ export default {
   font-family: var(--font-heading);
   font-size: var(--font-size-32);
   font-weight: var(--font-weight-light);
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
 }
 
 .privacy-article__lead {
@@ -339,7 +339,10 @@ export default {
   display: grid;
   gap: var(--spacing-12);
   margin: 0;
-  padding-top: var(--spacing-24);
+}
+
+.privacy-subsection + .privacy-subsection {
+  margin-top: var(--spacing-32);
 }
 
 .privacy-subsection__title {
@@ -392,11 +395,11 @@ export default {
   }
 
   .privacy-article {
-    gap: var(--spacing-12);
+    gap: var(--spacing-20);
   }
 
-  .privacy-subsection {
-    padding-top: var(--spacing-20);
+  .privacy-subsection + .privacy-subsection {
+    margin-top: var(--spacing-24);
   }
 }
 </style>
