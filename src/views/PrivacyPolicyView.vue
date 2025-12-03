@@ -323,6 +323,15 @@ export default {
   gap: 0;
 }
 
+/* Override global typography margins */
+.privacy-article h2,
+.privacy-article h3,
+.privacy-article p,
+.privacy-article ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .privacy-article__title {
   margin: 0 0 var(--spacing-16) 0;
   font-family: var(--font-heading);
@@ -339,6 +348,12 @@ export default {
   display: grid;
   gap: var(--spacing-12);
   margin: 0 0 var(--spacing-24) 0;
+}
+
+/* Override margins for elements inside subsection */
+.privacy-subsection p,
+.privacy-subsection ul {
+  margin-bottom: 0;
 }
 
 .privacy-subsection__title {
