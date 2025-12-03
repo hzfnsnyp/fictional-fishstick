@@ -4,7 +4,7 @@
       <h1 class="page-title">Privacy Policy</h1>
     </div>
 
-    <section class="layout-main privacy-intro" style="--flow-space: var(--spacing-48)">
+    <section class="layout-main privacy-intro">
       <div class="layout-narrow privacy-intro__inner">
         <p class="privacy-lede">
           This draft outlines how Leah Sanata Studio ("the Studio") captures, stores, and uses personal information
@@ -245,12 +245,12 @@ export default {
 }
 
 .privacy-intro {
-  padding-block: var(--spacing-48);
+  padding-block: var(--spacing-48) var(--spacing-32);
 }
 
 .privacy-intro__inner {
   display: grid;
-  gap: var(--spacing-32);
+  gap: var(--spacing-24);
 }
 
 .privacy-lede {
@@ -275,6 +275,9 @@ export default {
   color: var(--color-text-secondary);
   text-decoration: none;
   transition: color var(--transition-normal);
+  display: inline;
+  padding: 0;
+  margin: 0;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -287,6 +290,17 @@ export default {
   color: var(--color-brand-primary);
 }
 
+@media (max-width: 768px) {
+  .privacy-toc a {
+    min-height: var(--spacing-32) !important;
+    min-width: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
 .privacy-toc__children {
   list-style: none;
   margin: var(--spacing-12) 0 0 var(--spacing-20);
@@ -296,17 +310,17 @@ export default {
 }
 
 .privacy-body {
-  padding-block: var(--spacing-48);
+  padding-block: 0 var(--spacing-48);
 }
 
 .privacy-body__inner {
   display: grid;
-  gap: var(--spacing-48);
+  gap: var(--spacing-40);
 }
 
 .privacy-article {
   display: grid;
-  gap: var(--spacing-12);
+  gap: var(--spacing-16);
 }
 
 .privacy-article__title {
@@ -325,10 +339,7 @@ export default {
   display: grid;
   gap: var(--spacing-12);
   margin: 0;
-}
-
-.privacy-subsection + .privacy-subsection {
-  margin-top: var(--spacing-12);
+  padding-top: var(--spacing-24);
 }
 
 .privacy-subsection__title {
@@ -344,7 +355,7 @@ export default {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 4px;
+  gap: var(--spacing-8);
 }
 
 .privacy-list li {
@@ -365,11 +376,27 @@ export default {
 
 @media (max-width: 768px) {
   .privacy-intro {
-    padding-block: var(--spacing-32);
+    padding-block: var(--spacing-32) var(--spacing-24);
+  }
+
+  .privacy-intro__inner {
+    gap: var(--spacing-20);
   }
 
   .privacy-body {
-    padding-block: var(--spacing-32);
+    padding-block: 0 var(--spacing-32);
+  }
+
+  .privacy-body__inner {
+    gap: var(--spacing-32);
+  }
+
+  .privacy-article {
+    gap: var(--spacing-12);
+  }
+
+  .privacy-subsection {
+    padding-top: var(--spacing-20);
   }
 }
 </style>

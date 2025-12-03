@@ -4,7 +4,7 @@
       <h1 class="page-title">Terms of Use</h1>
     </div>
 
-    <section class="layout-main" style="--flow-space: var(--spacing-48)">
+    <section class="layout-main terms-intro">
       <div class="layout-narrow page-intro">
         <p class="page-intro__lede">
           The following outline previews the structure of the future Terms of Use for Leah Sanata Studio. It clarifies expectations for visiting, commissioning or purchasing through the site while we finalise the legal text with counsel.
@@ -24,7 +24,7 @@
       </div>
     </section>
 
-    <section class="layout-main">
+    <section class="layout-main terms-body">
       <div class="layout-narrow policy-body">
         <article id="terms-1" class="policy-section">
           <h2>1. Overview</h2>
@@ -101,9 +101,13 @@ export default {
   padding-bottom: var(--spacing-96);
 }
 
+.terms-intro {
+  padding-block: var(--spacing-48) var(--spacing-32);
+}
+
 .page-intro {
   display: grid;
-  gap: var(--spacing-32);
+  gap: var(--spacing-24);
 }
 
 .page-intro__lede {
@@ -121,12 +125,15 @@ export default {
   padding: 0;
   margin: 0;
   display: grid;
-  gap: var(--spacing-16);
+  gap: var(--spacing-12);
 }
 
 .policy-toc a {
   color: var(--color-text-primary);
   text-decoration: none;
+  display: inline;
+  padding: 0;
+  margin: 0;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -135,19 +142,56 @@ export default {
   }
 }
 
+@media (max-width: 768px) {
+  .policy-toc a {
+    min-height: var(--spacing-32) !important;
+    min-width: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+.terms-body {
+  padding-block: 0 var(--spacing-48);
+}
+
 .policy-body {
   display: grid;
-  gap: var(--spacing-64);
+  gap: var(--spacing-40);
 }
 
 .policy-section {
   display: grid;
-  gap: var(--spacing-20);
+  gap: var(--spacing-16);
   scroll-margin-top: calc(var(--header-height) + var(--spacing-20));
 }
 
 .policy-section h2 {
   margin: 0;
   font-family: var(--font-heading);
+}
+
+@media (max-width: 768px) {
+  .terms-intro {
+    padding-block: var(--spacing-32) var(--spacing-24);
+  }
+
+  .page-intro {
+    gap: var(--spacing-20);
+  }
+
+  .terms-body {
+    padding-block: 0 var(--spacing-32);
+  }
+
+  .policy-body {
+    gap: var(--spacing-32);
+  }
+
+  .policy-section {
+    gap: var(--spacing-12);
+  }
 }
 </style>

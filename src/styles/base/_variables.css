@@ -381,6 +381,14 @@
     --button-height-medium: 40px; /* 5 × 8px = 40px */
     --button-height-small: 32px; /* 4 × 8px = 32px */
 
+    /* Mobile font sizes - responsive scaling */
+    --font-size-60: 3rem; /* 48px on mobile (from 60px) */
+    --font-size-46: 2.5rem; /* 40px on mobile (from 46px) */
+    --font-size-38: 2rem; /* 32px on mobile (from 38px) */
+    --font-size-32: 1.75rem; /* 28px on mobile (from 32px) */
+    --font-size-28: 1.5rem; /* 24px on mobile (from 28px) */
+    --font-size-24: 1.25rem; /* 20px on mobile (from 24px) */
+
     /* Adjust gutter clamp bounds on compact screens */
     --site-gutter-min: 14px;
     --site-gutter-max: 32px;
