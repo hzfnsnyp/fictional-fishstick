@@ -1,0 +1,23 @@
+/* FILE: src/styles/main.css */
+/* Main stylesheet - imports all design system files */
+
+/* 1. Font definitions */
+@import './base/_fonts.css';
+
+/* 2. CSS Variables */
+@import './base/_variables.css';
+
+/* 3. Reset/Normalize */
+@import './base/_reset.css';
+
+/* 4. Typography */
+@import './base/_typography.css';
+
+/* 5. Utilities */
+@import './base/_utilities.css';
+
+/* 6. Layout */
+@import './base/_layout.css';
+
+/* 7. WCAG focus */
+@import './base/_focus_styles.css';

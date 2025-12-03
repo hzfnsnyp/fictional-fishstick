@@ -1,0 +1,46 @@
+.pswp {
+  --pswp-bg: var(--color-surface-primary);
+  --pswp-placeholder-bg: var(--color-surface-primary);
+  --pswp-preloader-color: rgba(16, 18, 19, 0.4);
+  --pswp-preloader-color-secondary: rgba(16, 18, 19, 0.7);
+
+  background: var(--pswp-bg);
+  color: var(--color-text-primary);
+}
+
+.pswp__bg,
+.pswp__scroll-wrap,
+.pswp__container,
+.pswp__item,
+.pswp__content,
+.pswp__zoom-wrap {
+  background: var(--pswp-bg);
+  opacity: 1;
+}
+
+.pswp__bg {
+  opacity: 1 !important;
+}
+
+.pswp__top-bar {
+  background: transparent;
+  color: var(--color-text-primary);
+}
+
+.pswp__caption {
+  color: var(--color-text-primary);
+}
+
+.pswp__img {
+  object-fit: contain;
+}
+
+.pswp__button--close,
+.pswp__button--arrow--prev,
+.pswp__button--arrow--next {
+  display: none !important;
+}
+
+.pswp__counter {
+  display: none !important;
+}

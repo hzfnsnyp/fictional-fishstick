@@ -1,0 +1,447 @@
+/* ==========================================================================
+   Typography - Art Portfolio
+   ========================================================================== */
+
+/* ==========================================================================
+   Base Typography Setup
+   ========================================================================== */
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-18); /* 18px desktop, 16px mobile */
+  font-weight: var(--font-weight-regular); /* 400 - Regular weight */
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Responsive body type scaling (moved from _variables.css) */
+@media (max-width: 640px) {
+  body {
+    font-size: var(--font-size-18); /* 16px on mobile */
+    line-height: var(--line-height-loose); /* 16px × 1.75 = 28px */
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  body {
+    font-size: var(--font-size-18); /* 16px on tablet */
+    line-height: var(--line-height-loose);
+  }
+}
+
+/* ==========================================================================
+   Headings - Publico Banner (default: normal case)
+   ========================================================================== */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading); /* Publico Banner */
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+  margin-top: 0;
+  margin-bottom: var(--spacing-20);
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+h5, h6 {
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-20);
+  letter-spacing: normal;
+}
+
+/* Individual heading sizes */
+h1 { 
+  font-size: var(--font-size-60); /* 64px desktop, 48px mobile */
+  margin-bottom: var(--spacing-48);
+}
+
+h2 { 
+  font-size: var(--font-size-46); /* 52px desktop, 40px mobile */
+  margin-bottom: var(--spacing-32);
+}
+
+h3 { 
+  font-size: var(--font-size-38); /* 44px desktop, 32px mobile */
+  margin-bottom: var(--spacing-32);
+}
+
+h4 { 
+  font-size: var(--font-size-28); /* 36px desktop, 28px mobile */
+  margin-bottom: var(--spacing-20);
+}
+
+/* Desktop: tighter vertical rhythm for Publico headings */
+@media (min-width: 769px) {
+  h1 { margin-top: 0; margin-bottom: var(--spacing-32); }
+  h2 { margin-top: 0; margin-bottom: var(--spacing-20); }
+  h3 { margin-top: 0; margin-bottom: var(--spacing-20); }
+  h4 { margin-top: 0; margin-bottom: var(--spacing-8); }
+}
+
+h5 { 
+  font-size: var(--font-size-24); /* 24px desktop, 20px mobile */
+  margin-bottom: var(--spacing-20);
+  font-weight: var(--font-weight-regular); /* Slightly heavier for smaller size */
+}
+
+h6 { 
+  font-size: var(--font-size-18); /* 18px desktop, 16px mobile */
+  margin-bottom: var(--spacing-20);
+  font-weight: var(--font-weight-regular);
+}
+
+/* ==========================================================================
+   Hero Typography
+   ========================================================================== */
+.hero-text {
+  font-family: var(--font-heading);
+  /* Responsive clamp keeps long statements readable on mobile */
+  font-size: clamp(2.25rem, 8vw, var(--font-size-108));
+  font-weight: var(--font-weight-light);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: none; /* Heroes often look better without uppercase */
+  margin-bottom: var(--spacing-64);
+}
+
+.hero-text--italic {
+  font-style: italic;
+}
+
+.hero-text--uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* Mobile fine-tuning for hero statements */
+@media (max-width: 640px) {
+  .hero-text {
+    line-height: 1.05;
+    margin-bottom: var(--spacing-48);
+  }
+}
+
+/* ==========================================================================
+   Body Text
+   ========================================================================== */
+p {
+  font-size: var(--font-size-18); /* 18px desktop, 16px mobile */
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-regular); /* 400 - Regular weight */
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-32);
+}
+
+/* Lead paragraph */
+.lead {
+  font-size: var(--font-size-24); /* 24px */
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-loose);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-48);
+}
+
+/* Small text */
+.small {
+  font-size: var(--font-size-18); /* 16px */
+  font-weight: var(--font-weight-regular);
+}
+
+/* ==========================================================================
+   Text Utilities
+   ========================================================================== */
+
+/* Size utilities */
+.text-sm { font-size: var(--font-size-18); }
+.text-base { font-size: var(--font-size-18); }
+.text-md { font-size: var(--font-size-20); }
+.text-lg { font-size: var(--font-size-24); }
+
+/* Weight utilities */
+.text-light { font-weight: var(--font-weight-light); }
+.text-regular { font-weight: var(--font-weight-regular); }
+.text-medium { font-weight: var(--font-weight-medium); }
+.text-semibold { font-weight: var(--font-weight-semibold); }
+
+/* Style utilities */
+.text-italic { font-style: italic; }
+.text-uppercase { text-transform: uppercase; letter-spacing: 0.05em; }
+.text-lowercase { text-transform: lowercase; }
+.text-capitalize { text-transform: capitalize; }
+.text-normal { text-transform: none; }
+
+/* Color utilities */
+.text-muted { color: var(--color-text-muted); }
+.text-accent { color: var(--color-accent); }
+
+/* Alignment */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }
+
+/* ==========================================================================
+   Special Typography Classes
+   ========================================================================== */
+
+/* Section headings - smaller uppercase labels */
+.heading-section {
+  font-size: var(--font-size-18); /* 16px */
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: normal;
+  margin-bottom: var(--spacing-32);
+}
+
+/* Display headings - for special cases without uppercase */
+.heading-display {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-light);
+  font-style: italic;
+  letter-spacing: -0.02em;
+  text-transform: none; /* Override uppercase for display headings */
+}
+
+/* Caption text */
+.caption {
+  font-family: var(--font-caption);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-metadata);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-style: normal;
+  margin-top: var(--spacing-12);
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: inherit;
+  transition: all var(--transition-fast);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a:hover {
+    color: var(--color-accent-dark);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .link-muted:hover {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+  }
+}
+
+/* Text link variations */
+.link-muted {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+  text-underline-offset: 0.2em;
+}
+
+/* ==========================================================================
+   Lists
+   ========================================================================== */
+ul, ol {
+  font-size: var(--font-size-18); /* 18px */
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-32);
+  padding-left: var(--spacing-48);
+}
+
+li {
+  margin-bottom: var(--spacing-16);
+}
+
+/* Custom list styles */
+ul.list-none,
+ol.list-none {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.list-dash {
+  list-style: none;
+  padding-left: var(--spacing-48);
+}
+
+ul.list-dash li::before {
+  content: "–";
+  position: absolute;
+  margin-left: calc(var(--spacing-48) * -1);
+}
+
+/* ==========================================================================
+   Blockquotes
+   ========================================================================== */
+blockquote {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-light);
+  font-style: italic;
+  font-size: var(--font-size-24); /* 24px */
+  line-height: var(--line-height-loose);
+  margin: var(--spacing-64) 0;
+  padding-left: var(--spacing-48);
+  border-left: 2px solid var(--color-accent);
+  color: var(--color-text);
+}
+
+blockquote cite {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--font-size-18);
+  font-style: normal;
+  font-weight: var(--font-weight-regular);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  margin-top: var(--spacing-32);
+}
+
+blockquote cite::before {
+  content: "— ";
+}
+
+/* ==========================================================================
+   Emphasis and Strong
+   ========================================================================== */
+em, i {
+  font-style: italic;
+}
+
+strong, b {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Nested emphasis */
+em strong,
+strong em {
+  font-weight: var(--font-weight-semibold);
+  font-style: italic;
+}
+
+/* ==========================================================================
+   Code and Pre
+   ========================================================================== */
+code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.875em;
+  font-weight: var(--font-weight-regular);
+  background-color: var(--color-background-alt);
+  padding: 0.125em 0.25em;
+  border-radius: 0;
+  color: var(--color-accent);
+}
+
+pre {
+  font-family: 'Courier New', monospace;
+  font-size: var(--font-size-18);
+  line-height: var(--line-height-normal);
+  background-color: var(--color-background-alt);
+  padding: var(--spacing-32);
+  overflow-x: auto;
+  margin-bottom: var(--spacing-32);
+  border: var(--border-width) solid var(--color-border);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* ==========================================================================
+   Form Typography
+   ========================================================================== */
+label {
+  display: block;
+  font-size: var(--font-size-18); /* 16px */
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-16);
+  color: var(--color-text);
+}
+
+input, textarea, select {
+  font-size: var(--font-size-18); /* 18px */
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+}
+
+/* Placeholder text */
+::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+  font-weight: var(--font-weight-regular);
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+table {
+  font-size: var(--font-size-18);
+  line-height: var(--line-height-normal);
+}
+
+th {
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--font-size-18);
+}
+
+td {
+  font-weight: var(--font-weight-regular);
+}
+
+/* ==========================================================================
+   Selection
+   ========================================================================== */
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-background);
+}
+
+::-moz-selection {
+  background-color: var(--color-accent);
+  color: var(--color-background);
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+@media print {
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  
+  h1 { font-size: 24pt; }
+  h2 { font-size: 20pt; }
+  h3 { font-size: 18pt; }
+  h4 { font-size: 16pt; }
+  h5, h6 { font-size: 14pt; }
+  
+  p { font-size: 12pt; }
+}

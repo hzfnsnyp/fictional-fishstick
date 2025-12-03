@@ -1,0 +1,275 @@
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+
+/* ==========================================================================
+   Dividers - Pixel-perfect 1px lines
+   ========================================================================== */
+.header-offset {
+  padding-top: var(--header-height);
+}
+.divider-h {
+  height: 1px;
+  width: 100%;
+  background-color: var(--color-border);
+  border: none;
+  display: block;
+  /* Ensure crisp 1px rendering */
+  transform: translateY(0.5px);
+  transform-origin: top left;
+}
+
+.divider-v {
+  width: 1px;
+  height: 100%;
+  background-color: var(--color-border);
+  border: none;
+  display: block;
+  /* Ensure crisp 1px rendering */
+  transform: translateX(0.5px);
+  transform-origin: top left;
+}
+
+/* For better rendering on retina displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .divider-h {
+    transform: translateY(0);
+  }
+
+  .divider-v {
+    transform: translateX(0);
+  }
+}
+
+/* ==========================================================================
+   Layout Utilities
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-48);
+}
+
+.container--narrow {
+  max-width: var(--container-narrow);
+}
+
+.container--wide {
+  max-width: var(--container-wide);
+}
+
+/* ==========================================================================
+   Display Utilities
+   ========================================================================== */
+.hidden {
+  display: none !important;
+}
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.flex {
+  display: flex;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+/* ==========================================================================
+   Spacing Utilities
+   ========================================================================== */
+.mt-0 {
+  margin-top: 0;
+}
+.mt-xs {
+  margin-top: var(--spacing-16);
+}
+.mt-sm {
+  margin-top: var(--spacing-20);
+}
+.mt-md {
+  margin-top: var(--spacing-32);
+}
+.mt-lg {
+  margin-top: var(--spacing-48);
+}
+.mt-xl {
+  margin-top: var(--spacing-64);
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+.mb-xs {
+  margin-bottom: var(--spacing-16);
+}
+.mb-sm {
+  margin-bottom: var(--spacing-20);
+}
+.mb-md {
+  margin-bottom: var(--spacing-32);
+}
+.mb-lg {
+  margin-bottom: var(--spacing-48);
+}
+.mb-xl {
+  margin-bottom: var(--spacing-64);
+}
+
+/* ==========================================================================
+   Page Title System
+   Unified page title styling and positioning for all pages (except hero pages)
+   ========================================================================== */
+.page-title {
+  margin-top: 0;
+  margin-bottom: var(--spacing-48);
+  padding-top: var(--spacing-64);
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    padding-top: var(--spacing-48);
+    margin-bottom: var(--spacing-32);
+  }
+}
+
+/* ==========================================================================
+   Flow Layout Utility
+   Consistent vertical rhythm between direct children using --flow-space.
+   Supply --flow-space via utilities, components, or inline styles.
+   ========================================================================== */
+.flow > * + * {
+  margin-top: var(--flow-space, var(--gap-block));
+}
+
+.flow-xs {
+  --flow-space: var(--spacing-16);
+}
+
+.flow-sm {
+  --flow-space: var(--spacing-24);
+}
+
+.flow-md {
+  --flow-space: var(--spacing-32);
+}
+
+.flow-lg {
+  --flow-space: var(--spacing-48);
+}
+
+.flow-xl {
+  --flow-space: var(--spacing-64);
+}
+
+.flow-xxl {
+  --flow-space: var(--spacing-96);
+}
+
+.flow-none {
+  --flow-space: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .flow-mobile-none {
+    --flow-space: 0 !important;
+  }
+
+  .flow-mobile-sm {
+    --flow-space: var(--spacing-24) !important;
+  }
+
+  .flow-mobile-md {
+    --flow-space: var(--spacing-32) !important;
+  }
+}
+
+/* ==========================================================================
+   Position Utilities
+   ========================================================================== */
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.sticky {
+  position: sticky;
+}
+
+/* ==========================================================================
+   Z-Index Utilities
+   ========================================================================== */
+.z-dropdown {
+  z-index: var(--z-dropdown);
+}
+.z-sticky {
+  z-index: var(--z-sticky);
+}
+.z-fixed {
+  z-index: var(--z-fixed);
+}
+.z-overlay {
+  z-index: var(--z-overlay);
+}
+.z-modal {
+  z-index: var(--z-modal);
+}
+
+/* ==========================================================================
+   Overflow Utilities
+   ========================================================================== */
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.overflow-scroll {
+  overflow: scroll;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+/* ==========================================================================
+   Screen Reader Only
+   ========================================================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sr-only:focus {
+  outline: none;
+}
+
