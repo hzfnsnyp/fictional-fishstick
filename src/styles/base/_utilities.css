@@ -3,6 +3,80 @@
    ========================================================================== */
 
 /* ==========================================================================
+   Typography Reset Utilities
+   ========================================================================== */
+
+/*
+ * Reset typography spacing - use when you need full control over spacing
+ * Removes all default margins from typography elements
+ * Use case: Custom layouts, cards, legal pages, complex nested structures
+ */
+.reset-typography-spacing,
+.reset-typography-spacing h1,
+.reset-typography-spacing h2,
+.reset-typography-spacing h3,
+.reset-typography-spacing h4,
+.reset-typography-spacing h5,
+.reset-typography-spacing h6,
+.reset-typography-spacing p,
+.reset-typography-spacing ul,
+.reset-typography-spacing ol,
+.reset-typography-spacing li {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/*
+ * Prose - Rich text content with natural typography spacing
+ * Use case: Blog posts, articles, rich text from CMS
+ * Preserves default typography margins for readable content
+ */
+.prose {
+  /* Typography elements inside .prose keep their default margins */
+}
+
+.prose > * + * {
+  margin-top: var(--spacing-24);
+}
+
+.prose h2 {
+  margin-top: var(--spacing-48);
+  margin-bottom: var(--spacing-20);
+}
+
+.prose h3 {
+  margin-top: var(--spacing-32);
+  margin-bottom: var(--spacing-16);
+}
+
+.prose p,
+.prose ul,
+.prose ol {
+  margin-bottom: var(--spacing-20);
+}
+
+.prose ul,
+.prose ol {
+  padding-left: var(--spacing-32);
+}
+
+@media (max-width: 768px) {
+  .prose > * + * {
+    margin-top: var(--spacing-20);
+  }
+
+  .prose h2 {
+    margin-top: var(--spacing-32);
+    margin-bottom: var(--spacing-16);
+  }
+
+  .prose h3 {
+    margin-top: var(--spacing-24);
+    margin-bottom: var(--spacing-12);
+  }
+}
+
+/* ==========================================================================
    Dividers - Pixel-perfect 1px lines
    ========================================================================== */
 .header-offset {

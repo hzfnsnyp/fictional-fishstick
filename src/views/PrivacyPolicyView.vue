@@ -30,7 +30,7 @@
 
     <section class="layout-main privacy-body">
       <div class="layout-narrow privacy-body__inner">
-        <article id="privacy-1" class="privacy-article">
+        <article id="privacy-1" class="privacy-article reset-typography-spacing">
           <h2 class="privacy-article__title">1. Who we are</h2>
           <p class="privacy-article__lead">
             Leah Sanata Studio is operated from Dubai, United Arab Emirates. When this policy refers to "we", "us" or
@@ -39,7 +39,7 @@
           </p>
         </article>
 
-        <article id="privacy-2" class="privacy-article">
+        <article id="privacy-2" class="privacy-article reset-typography-spacing">
           <h2 class="privacy-article__title">2. What is personal data?</h2>
           <p class="privacy-article__lead">
             Personal data is any information that can identify a living individual either directly or when combined with
@@ -48,7 +48,7 @@
           </p>
         </article>
 
-        <article id="privacy-3" class="privacy-article">
+        <article id="privacy-3" class="privacy-article reset-typography-spacing">
           <h2 class="privacy-article__title">3. What personal data we hold</h2>
           <p class="privacy-article__lead">
             The Studio only collects personal data that is relevant to your relationship with us. Below is an overview of
@@ -108,7 +108,7 @@
           </section>
         </article>
 
-        <article id="privacy-4" class="privacy-article">
+        <article id="privacy-4" class="privacy-article reset-typography-spacing">
           <h2 class="privacy-article__title">4. Purposes for which personal data is used</h2>
           <p class="privacy-article__lead">We process personal data to:</p>
           <ul class="privacy-list">
@@ -121,7 +121,7 @@
           </ul>
         </article>
 
-        <article id="privacy-5" class="privacy-article">
+        <article id="privacy-5" class="privacy-article reset-typography-spacing">
           <h2 class="privacy-article__title">5. Legitimate interests for processing</h2>
           <p class="privacy-article__lead">
             The General Data Protection Regulation allows us to process personal data when it is necessary for our
@@ -131,7 +131,7 @@
           </p>
         </article>
 
-        <article id="privacy-6" class="privacy-article">
+        <article id="privacy-6" class="privacy-article reset-typography-spacing">
           <h2 class="privacy-article__title">6. Sharing personal data with third parties</h2>
           <p class="privacy-article__lead">
             We never sell personal data. We do share information with trusted vendors who provide payment processing,
@@ -141,7 +141,7 @@
           </p>
         </article>
 
-        <article id="privacy-7" class="privacy-article">
+        <article id="privacy-7" class="privacy-article reset-typography-spacing">
           <h2 class="privacy-article__title">7. Retention</h2>
           <p class="privacy-article__lead">
             We retain personal data only for as long as necessary to fulfil the purposes described in this policy, to
@@ -151,7 +151,7 @@
           </p>
         </article>
 
-        <article id="privacy-8" class="privacy-article">
+        <article id="privacy-8" class="privacy-article reset-typography-spacing">
           <h2 class="privacy-article__title">8. Your rights</h2>
           <p class="privacy-article__lead">You may contact us to:</p>
           <ul class="privacy-list">
@@ -162,7 +162,7 @@
           </ul>
         </article>
 
-        <article id="privacy-9" class="privacy-article">
+        <article id="privacy-9" class="privacy-article reset-typography-spacing">
           <h2 class="privacy-article__title">9. Keeping your data secure</h2>
           <p class="privacy-article__lead">
             We implement technical and organisational measures to protect your data, including encrypted storage, access
@@ -171,7 +171,7 @@
           </p>
         </article>
 
-        <article id="privacy-10" class="privacy-article">
+        <article id="privacy-10" class="privacy-article reset-typography-spacing">
           <h2 class="privacy-article__title">10. Photography and documentation</h2>
           <p class="privacy-article__lead">
             Events organised by the Studio may be photographed or filmed for documentation and archival purposes. Consent
@@ -179,7 +179,7 @@
           </p>
         </article>
 
-        <article id="privacy-11" class="privacy-article">
+        <article id="privacy-11" class="privacy-article reset-typography-spacing">
           <h2 class="privacy-article__title">11. Contact us</h2>
           <p class="privacy-article__lead">
             You can contact the Studio at privacy@leahsanata.com or by post at the studio address in Dubai. We will
@@ -187,7 +187,7 @@
           </p>
         </article>
 
-        <article id="privacy-12" class="privacy-article">
+        <article id="privacy-12" class="privacy-article reset-typography-spacing">
           <h2 class="privacy-article__title">12. Changes to this policy</h2>
           <p class="privacy-article__lead">
             We may update this policy to reflect legal requirements or operational changes. The revision date will be
@@ -323,15 +323,6 @@ export default {
   gap: 0;
 }
 
-/* Override global typography margins */
-.privacy-article h2,
-.privacy-article h3,
-.privacy-article p,
-.privacy-article ul {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
 .privacy-article__title {
   margin: 0 0 var(--spacing-16) 0;
   font-family: var(--font-heading);
@@ -348,12 +339,6 @@ export default {
   display: grid;
   gap: var(--spacing-12);
   margin: 0 0 var(--spacing-24) 0;
-}
-
-/* Override margins for elements inside subsection */
-.privacy-subsection p,
-.privacy-subsection ul {
-  margin-bottom: 0;
 }
 
 .privacy-subsection__title {
